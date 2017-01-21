@@ -1,9 +1,11 @@
 package a2Duck;
 
 public class ColoredDuck extends Duck {
-	
-	FlyBehavior flyBehavior = new FlyBehavior();
-	QuackBehavior quackBehavior = new QuackBehavior();
+
+	public ColoredDuck() {
+		flyBehavior = new FlyWithWings();
+		quackBehavior = new Quack();
+	}
 
 	public void fly() {
 		flyBehavior.fly();

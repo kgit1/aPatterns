@@ -2,8 +2,10 @@ package a2Duck;
 
 public class SmallDuck extends Duck {
 
-	FlyBehavior flyBehavior;
-	QuackBehavior quackBehavior;
+	public SmallDuck() {
+		flyBehavior = new FlyWithWings();
+		quackBehavior = new Quack();
+	}
 
 	public void fly() {
 		flyBehavior.fly();
@@ -16,7 +18,6 @@ public class SmallDuck extends Duck {
 	@Override
 	public void display() {
 		System.out.println("Small Duck");
-
 	}
 
 }

@@ -16,6 +16,7 @@ public class Main {
 	public static void duckInvoker(Duck duck) {
 		duck.display();
 		duck.quack();
+		duck.fly();
 		duck.swim();
 	}
 
