@@ -1,4 +1,4 @@
-package a2Duck;
+package a2Duck.StrategyPattern;
 
 public interface QuackBehavior {
 	void quack();

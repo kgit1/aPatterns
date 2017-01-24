@@ -1,4 +1,4 @@
-package a2Duck;
+package a2Duck.StrategyPattern;
 
 public class FlyRocketPower implements FlyBehavior {
 

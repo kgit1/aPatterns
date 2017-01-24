@@ -1,9 +1,9 @@
-package a2Duck;
+package a2Duck.StrategyPattern;
 
 //IS-A - Inheritance
-public class SmallDuck extends Duck {
+public class ColoredDuck extends Duck {
 
-	public SmallDuck() {
+	public ColoredDuck() {
 		flyBehavior = new FlyWithWings();
 		quackBehavior = new Quack();
 	}
@@ -18,6 +18,6 @@ public class SmallDuck extends Duck {
 
 	@Override
 	public void display() {
-		System.out.println("Small Duck");
+		System.out.println("Colored Duck");
 	}
 }

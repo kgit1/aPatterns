@@ -1,4 +1,4 @@
-package a2Duck;
+package a2Duck.StrategyPattern;
 
 //IS-A - Inheritance
 public class RubberDuck extends Duck {
