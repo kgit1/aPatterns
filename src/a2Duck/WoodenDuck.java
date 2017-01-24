@@ -1,5 +1,6 @@
 package a2Duck;
 
+//IS-A - Inheritance
 public class WoodenDuck extends Duck {
 
 	public WoodenDuck() {

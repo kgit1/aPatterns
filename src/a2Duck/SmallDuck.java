@@ -1,5 +1,6 @@
 package a2Duck;
 
+//IS-A - Inheritance
 public class SmallDuck extends Duck {
 
 	public SmallDuck() {

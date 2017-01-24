@@ -2,6 +2,7 @@ package a2Duck;
 
 public abstract class Duck {
 
+	//HAS-A --> Composition
 	FlyBehavior flyBehavior;
 	QuackBehavior quackBehavior;
 
