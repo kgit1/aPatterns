@@ -19,5 +19,4 @@ public class WoodenDuck extends Duck {
 	public void display() {
 		System.out.println("Wooden Duck");
 	}
-
 }

@@ -6,5 +6,4 @@ public class Squeak implements QuackBehavior {
 	public void quack() {
 		System.out.println("I'm rubber duck and I squeak!");
 	}
-
 }

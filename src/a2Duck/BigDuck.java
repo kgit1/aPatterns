@@ -12,5 +12,4 @@ public class BigDuck extends Duck {
 		System.out.println("Big Duck");
 
 	}
-
 }
