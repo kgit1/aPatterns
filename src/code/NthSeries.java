@@ -26,15 +26,8 @@ public class NthSeries {
 
 	}
 
-	public static String seriesSum(int n) {
-		double sum = 0;
-		for (int i = 1; i < n * 3; i += 3) {
-			sum += 1.0 / i;
-		}
-		return String.format("%.2f", sum);
-	}
-
-	public static String seriesSum1(int n) {
+	// mine
+	public static String seriesSum0(int n) {
 		String s = "";
 		float f = 0;
 		for (int i = 0; i < n; i++) {
@@ -43,6 +36,16 @@ public class NthSeries {
 		return s += BigDecimal.valueOf(f).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
+	// better
+	public static String seriesSum1(int n) {
+		double sum = 0;
+		for (int i = 1; i < n * 3; i += 3) {
+			sum += 1.0 / i;
+		}
+		return String.format("%.2f", sum);
+	}
+
+	// different
 	public static String seriesSum2(int n) {
 		DecimalFormat df = new DecimalFormat("0.00");
 		double result = 0;
