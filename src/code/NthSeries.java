@@ -27,7 +27,7 @@ public class NthSeries {
 	}
 
 	// mine
-	public static String seriesSum0(int n) {
+	public static String seriesSum(int n) {
 		String s = "";
 		float f = 0;
 		for (int i = 0; i < n; i++) {
