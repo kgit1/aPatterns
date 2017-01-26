@@ -27,6 +27,7 @@ public class GetDayMonthYearJava678 {
 		System.out.println("dayOfYear from a date in Java 1.6 : " + dayOfYear);
 		System.out.println("month from a date in Java 1.7 : " + month);
 		System.out.println("year from date in JDK 6 : " + year);
+		System.out.println();
 
 		// In Java 8
 		LocalDate currentDate = LocalDate.now();

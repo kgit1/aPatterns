@@ -1,4 +1,4 @@
-package codeWars;
+package xCodeWars;
 
 import static org.junit.Assert.*;
 

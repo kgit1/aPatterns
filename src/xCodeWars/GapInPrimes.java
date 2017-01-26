@@ -1,4 +1,4 @@
-package codeWars;
+package xCodeWars;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package codeWars;
+package xCodeWars;
 
 public class Dubstep {
 
