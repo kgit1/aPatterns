@@ -20,12 +20,14 @@ public class LocalDateTimeJava8 {
 		// date and time
 		LocalDateTime rightNow = LocalDateTime.now();
 		System.out.println("current datetime : " + rightNow);
+		System.out.println();
 
 		// LocalDateTime.of() method is a factory method to careate
 		// LocalDateTiem with specific date and time
 		LocalDateTime aDateTime = LocalDateTime.of(2015, Month.JULY, 29, 19, 30,
 				40);
 		System.out.println("some datetime : " + aDateTime);
+		System.out.println();
 
 		// You can also create LocalDateTime object by combining LocalDate
 		// and LocalTime
@@ -34,7 +36,8 @@ public class LocalDateTimeJava8 {
 		LocalDateTime fromDateAndTime = LocalDateTime.of(currentDate,
 				currentTime);
 		System.out.println("LocalDateTime created by combining LocalDate"
-				+ " and LocalTime" + fromDateAndTime);
+				+ " and LocalTime \n" + fromDateAndTime);
+		System.out.println();
 
 		// You can also retrieve LocalDate and LocalTime from LocalDateTime
 		LocalDate retrievedDate = fromDateAndTime.toLocalDate();
