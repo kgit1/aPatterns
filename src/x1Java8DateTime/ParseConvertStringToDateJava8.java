@@ -3,7 +3,7 @@ package x1Java8DateTime;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DateTimeFormatterJava8 {
+public class ParseConvertStringToDateJava8 {
 	// Java Program to demonstrate how to use DateTimeFormatter class
 	// to parse String to date in Java 8 and format date to String in
 	// various formats e.g. dd-MM-yyyy * * @author WINDOWS 8
