@@ -19,9 +19,9 @@ public class CurrentDateAndTime {
 		System.out.println("current time: " + currentTime);
 
 		// today's date in ddMMyyyy in Java
-		DateFormat df = new SimpleDateFormat("ddMMyyyy");
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String todayDate = df.format(today);
-		System.out.println("Today's date in ddMMyyyy format: " + todayDate);
+		System.out.println("Today's date in dd-MM-yyyy format: " + todayDate);
 
 		// today's date in mm/dd/yyyy format
 		df = new SimpleDateFormat("MM/dd/yyyy");
