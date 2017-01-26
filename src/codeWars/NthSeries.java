@@ -1,4 +1,4 @@
-package code;
+package codeWars;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

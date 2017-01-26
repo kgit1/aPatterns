@@ -1,4 +1,4 @@
-package code;
+package codeWars;
 
 public class Money {
 

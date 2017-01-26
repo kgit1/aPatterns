@@ -1,4 +1,4 @@
-package code;
+package codeWars;
 
 import static org.junit.Assert.*;
 
