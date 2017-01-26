@@ -5,12 +5,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 
+// Java Program to demonstrate How to use LocalDateTime class in Java 8.
+// LocalDateTime is LocalDate + LocalTime, i.e. date with time
 public class LocalDateTimeJava8 {
-	/**
-	 * * Java Program to demonstrate How to use LocalDateTime class in Java 8. *
-	 * LocalDateTime is LocalDate + LocalTime, i.e. date with time * @author
-	 * WINDOWS 8
-	 */
+
 	public static void main(String args[]) {
 		// LocalDate is date without time in Java 8
 		// LocalTime is time without date in Java 8
