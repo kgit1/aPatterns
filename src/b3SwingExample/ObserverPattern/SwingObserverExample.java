@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class SwingObserverExample {
 
 	JFrame frame;
+	JLabel label;
 	int ask = (int) (Math.random() * 10);
 
 	public static void main(String[] args) {
@@ -20,6 +22,7 @@ public class SwingObserverExample {
 	public void go() {
 		frame = new JFrame();
 		JButton button = new JButton("Should I do it?");
+		label = new JLabel("Answer is: ");
 		button.addActionListener(new AngelListener());
 		button.addActionListener(new DevilListener());
 		button.addActionListener(new AskListener());
@@ -27,6 +30,7 @@ public class SwingObserverExample {
 		// Set frame properties
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(BorderLayout.CENTER, button);
+		frame.getContentPane().add(BorderLayout.SOUTH, label);
 		frame.setSize(300, 300);
 		frame.setVisible(true);
 	}
@@ -36,6 +40,8 @@ public class SwingObserverExample {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (ask > 5) {
+				label.setText("Angel: Don't do it, you might regret it! (" + ask
+						+ ")");
 				System.out.println("Angel: Don't do it, you might regret it!");
 			}
 		}
@@ -46,6 +52,8 @@ public class SwingObserverExample {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (ask < 5) {
+				label.setText("Devil: Come on, do it! (" + ask
+						+ ")");
 				System.out.println("Devil: Come on, do it!");
 			}
 		}
