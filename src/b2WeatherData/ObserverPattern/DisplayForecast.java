@@ -5,6 +5,12 @@ public class DisplayForecast implements Observer, DisplayElement {
 	private float temperature;
 	private float humidity;
 	private float pressure;
+	private Subject weatherData;
+
+	public DisplayForecast(Subject weatherData) {
+		this.weatherData = weatherData;
+		weatherData.registerObserver(this);
+	}
 
 	@Override
 	public void display() {
@@ -16,5 +22,6 @@ public class DisplayForecast implements Observer, DisplayElement {
 		this.temperature = temperature;
 		this.humidity = humidity;
 		this.pressure = pressure;
+		display();
 	}
 }
