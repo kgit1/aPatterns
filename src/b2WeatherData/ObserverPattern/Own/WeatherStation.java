@@ -1,4 +1,4 @@
-package b2WeatherData.ObserverPattern;
+package b2WeatherData.ObserverPattern.Own;
 
 public class WeatherStation {
 

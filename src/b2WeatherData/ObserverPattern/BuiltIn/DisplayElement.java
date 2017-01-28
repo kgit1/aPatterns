@@ -1,4 +1,4 @@
-package b2WeatherData.ObserverPattern.Refactored;
+package b2WeatherData.ObserverPattern.BuiltIn;
 
 public interface DisplayElement {
 	void display();

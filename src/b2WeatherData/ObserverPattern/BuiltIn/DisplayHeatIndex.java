@@ -1,4 +1,4 @@
-package b2WeatherData.ObserverPattern.Refactored;
+package b2WeatherData.ObserverPattern.BuiltIn;
 
 import java.util.Observable;
 import java.util.Observer;
