@@ -1,4 +1,4 @@
-package b1WeatherData.ObserverPattern;
+package b2WeatherData.ObserverPattern;
 
 import java.util.ArrayList;
 

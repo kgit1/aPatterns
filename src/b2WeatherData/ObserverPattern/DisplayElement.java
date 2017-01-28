@@ -1,4 +1,4 @@
-package b1WeatherData.ObserverPattern;
+package b2WeatherData.ObserverPattern;
 
 public interface DisplayElement {
 	void display();
