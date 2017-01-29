@@ -3,7 +3,7 @@ package c1.Sratbuzz.DecoratorPattern;
 public class Espresso extends Beverage {
 
 	public Espresso() {
-		description = "Espresso";
+		description = "Espresso - $1.99";
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package c1.Sratbuzz.DecoratorPattern;
 public class DarkRoast extends Beverage {
 
 	public DarkRoast() {
-		description = "DarkRoast";
+		description = "DarkRoast - $0.99";
 	}
 
 	@Override
