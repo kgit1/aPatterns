@@ -8,4 +8,11 @@ public abstract class Beverage {
 	}
 
 	public abstract double cost();
+
+	// to do
+	public void getSize() {
+	};
+
+	public void setSize() {
+	};
 }
