@@ -21,6 +21,14 @@ public class StarbuzzCofee {
 		beverage3 = new Mocha(beverage3);
 		beverage3 = new Whip(beverage3);
 		printCheck(beverage3);
+		
+		Beverage beverage4 = new HouseBlend();
+		beverage4 = new Soy(beverage4);
+		beverage4 = new Mocha(beverage4);
+		beverage4 = new Mocha(beverage4);
+		beverage4 = new Mocha(beverage4);
+		beverage4 = new Whip(beverage4);
+		printCheck(beverage4);
 	}
 
 	public static void printCheck(Beverage beverage) {
