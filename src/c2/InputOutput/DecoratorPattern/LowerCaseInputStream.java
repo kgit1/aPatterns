@@ -4,6 +4,9 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+//create own class decorator for FilterInput stream
+//receieves bytes from superClass and compares if they responsible for 
+//upper Characters and if so - converts them to lower case 
 public class LowerCaseInputStream extends FilterInputStream {
 
 	protected LowerCaseInputStream(InputStream in) {
@@ -24,5 +27,4 @@ public class LowerCaseInputStream extends FilterInputStream {
 		}
 		return result;
 	}
-
 }
