@@ -4,20 +4,20 @@ public class Pizza {
 
 	String name = "Some pizza";
 
-	public void prepare() {
-		System.out.println("Pizza prepared");
+	public void prepare(String name) {
+		System.out.println(name + "  prepared");
 
 	}
 
-	public void bake() {
-		System.out.println("Pizza baked");
+	public void bake(String name) {
+		System.out.println(name + "  baked");
 	}
 
-	public void cut() {
-		System.out.println("Pizza cut");
+	public void cut(String name) {
+		System.out.println(name + "  cut");
 	}
 
-	public void box() {
-		System.out.println("Pizza boxed");
+	public void box(String name) {
+		System.out.println(name + " boxed");
 	}
 }
