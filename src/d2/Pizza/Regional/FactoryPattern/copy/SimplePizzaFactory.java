@@ -1,4 +1,4 @@
-package d1.Pizza.FactoryPattern;
+package d2.Pizza.Regional.FactoryPattern.copy;
 
 public class SimplePizzaFactory {
 	
