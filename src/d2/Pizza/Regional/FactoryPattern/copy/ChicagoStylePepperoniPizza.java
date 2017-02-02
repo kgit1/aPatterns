@@ -3,7 +3,7 @@ package d2.Pizza.Regional.FactoryPattern.copy;
 public class ChicagoStylePepperoniPizza extends Pizza {
 
 	public ChicagoStylePepperoniPizza() {
-		name = "NYStylePepperoni Pizza";
+		name = "ChicagoStylePepperoni Pizza";
 	}
 }
 
