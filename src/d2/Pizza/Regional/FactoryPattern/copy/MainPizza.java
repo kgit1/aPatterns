@@ -20,11 +20,11 @@ public class MainPizza {
 		// System.out.println("==================================");
 		// System.out.println(pizza3.name);
 
-//		buyPizza("ny", "clam");
-//		buyPizza("chicago", "cheese");
-//		buyPizza("california", "clam");
-		buyPizza("california1", "clam");
-//		buyPizza("california", "clam1");
+		buyPizza("ny", "clam");
+		buyPizza("chicago", "cheese");
+		buyPizza("california", "clam");
+		// buyPizza("california1", "clam1");
+		// buyPizza("california", "clam1");
 	}
 
 	public static void buyPizza(String name, String type) {
@@ -42,6 +42,7 @@ public class MainPizza {
 		} else {
 			System.out.println(name + " is wrong pizza origin, try ny, chicago or california");
 			buyPizza(new Scanner(System.in).nextLine(), type);
+			return;
 		}
 		try {
 			Pizza pizza = pizzaStore.orderPizza(type);
