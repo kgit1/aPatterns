@@ -48,7 +48,7 @@ public class MainPizza {
 			Pizza pizza = pizzaStore.orderPizza(type);
 			System.out.println(pizza.name + " name");
 		} catch (NullPointerException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			System.out.println(type + " is wrong pizza type, try cheese, clam, pepperoni or veggie");
 			buyPizza(name, new Scanner(System.in).nextLine());
 		}
