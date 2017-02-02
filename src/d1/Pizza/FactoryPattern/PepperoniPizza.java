@@ -1,0 +1,5 @@
+package d1.Pizza.FactoryPattern;
+
+public class PepperoniPizza extends Pizza {
+
+}
