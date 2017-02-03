@@ -20,7 +20,7 @@ public class MainPizza {
 		// System.out.println("==================================");
 		// System.out.println(pizza3.name);
 
-		buyPizza("ny", "clam");
+		buyPizza("ny", "pepperoni");
 		buyPizza("chicago", "cheese");
 		buyPizza("california", "clam");
 		// buyPizza("california1", "clam1");
@@ -28,7 +28,7 @@ public class MainPizza {
 	}
 
 	public static void buyPizza(String name, String type) {
-		System.out.println("--------------------------------");
+		System.out.println("------------------------------------------");
 		PizzaStore pizzaStore = null;
 		if (name.equals("ny")) {
 			System.out.println(1);
@@ -52,6 +52,6 @@ public class MainPizza {
 			System.out.println(type + " is wrong pizza type, try cheese, clam, pepperoni or veggie");
 			buyPizza(name, new Scanner(System.in).nextLine());
 		}
-		System.out.println("--------------------------------");
+		System.out.println("------------------------------------------");
 	}
 }
