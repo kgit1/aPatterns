@@ -8,7 +8,7 @@ public interface PizzaIngridientFactory {
 
 	public Cheese createCheese();
 
-	public Vegies[] createVegies();
+	public Veggies[] createVeggies();
 
 	public Pepperoni createPepperoni();
 

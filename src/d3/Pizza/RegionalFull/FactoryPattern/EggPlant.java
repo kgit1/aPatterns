@@ -1,5 +1,5 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public class EggPlant implements Vegies {
+public class EggPlant implements Veggies {
 
 }

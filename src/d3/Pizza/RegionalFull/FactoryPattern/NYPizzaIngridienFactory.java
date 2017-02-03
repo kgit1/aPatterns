@@ -18,9 +18,9 @@ public class NYPizzaIngridienFactory implements PizzaIngridientFactory {
 	}
 
 	@Override
-	public Vegies[] createVegies() {
-		Vegies vegies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
-		return vegies;
+	public Veggies[] createVeggies() {
+		Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+		return veggies;
 	}
 
 	@Override
