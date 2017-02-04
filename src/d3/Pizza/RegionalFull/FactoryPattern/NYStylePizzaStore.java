@@ -2,17 +2,31 @@ package d3.Pizza.RegionalFull.FactoryPattern;
 
 public class NYStylePizzaStore extends PizzaStore {
 
-	@Override
-	Pizza createPizza(String type) {
-		if (type.equals("cheese")) {
-			return new NYStyleCheesePizza();
-		} else if (type.equals("pepperoni")) {
-			return new NYStylePepperoniPizza();
-		} else if (type.equals("clam")) {
-			return new NYStyleClamPizza();
-		} else if (type.equals("veggie")) {
-			return new NYStyleVeggiePizza();
-		} else
-			return null;
+	protected Pizza createPizza(String item) {
+		Pizza pizza = null;
+		PizzaIngredientFactory ingredientFactory = new NYPizzaIngredienFactory();
+
+		if (item.equals("cheese")) {
+
+			pizza = new CheesePizza(ingredientFactory);
+			pizza.setName("Chicago Style Cheese Pizza");
+
+		} else if (item.equals("veggie")) {
+
+			pizza = new VeggiePizza(ingredientFactory);
+			pizza.setName("Chicago Style Veggie Pizza");
+
+		} else if (item.equals("clam")) {
+
+			pizza = new ClamPizza(ingredientFactory);
+			pizza.setName("Chicago Style Clam Pizza");
+
+		} else if (item.equals("pepperoni")) {
+
+			pizza = new PepperoniPizza(ingredientFactory);
+			pizza.setName("Chicago Style Pepperoni Pizza");
+
+		}
+		return pizza;
 	}
 }

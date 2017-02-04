@@ -1,10 +1,8 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public class BlackOlives implements Veggies {
+public class ParmesanCheese implements Cheese {
 
-	@Override
 	public String toString() {
-		return "BlackOlives";
+		return "Shredded Parmesan";
 	}
-
 }

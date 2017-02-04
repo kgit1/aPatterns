@@ -1,6 +1,6 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public class NYPizzaIngridienFactory implements PizzaIngridientFactory {
+public class CaliforniaPizzaIngredienFactory implements PizzaIngredientFactory {
 
 	@Override
 	public Dough createDough() {
@@ -9,17 +9,17 @@ public class NYPizzaIngridienFactory implements PizzaIngridientFactory {
 
 	@Override
 	public Sauce createSauce() {
-		return new MarinaraSauce();
+		return new PlumTomatoSauce();
 	}
 
 	@Override
 	public Cheese createCheese() {
-		return new ReggianCheese();
+		return new Mozzarella();
 	}
 
 	@Override
 	public Veggies[] createVeggies() {
-		Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+		Veggies veggies[] = { new Spinach(), new BlackOlives(), new EggPlant() };
 		return veggies;
 	}
 
@@ -30,7 +30,7 @@ public class NYPizzaIngridienFactory implements PizzaIngridientFactory {
 
 	@Override
 	public Clams createClams() {
-		return new FreshClams();
+		return new FrozenClams();
 	}
 
 }

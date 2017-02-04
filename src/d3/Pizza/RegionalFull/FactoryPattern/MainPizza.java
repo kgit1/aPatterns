@@ -20,6 +20,33 @@ public class MainPizza {
 		// System.out.println("==================================");
 		// System.out.println(pizza3.name);
 
+		PizzaStore nyStore = new NYStylePizzaStore();
+		PizzaStore chicagoStore = new ChicagoStylePizzaStore();
+
+		Pizza pizza = nyStore.orderPizza("cheese");
+		System.out.println("Ethan ordered a " + pizza + "\n");
+
+		pizza = chicagoStore.orderPizza("cheese");
+		System.out.println("Joel ordered a " + pizza + "\n");
+
+		pizza = nyStore.orderPizza("clam");
+		System.out.println("Ethan ordered a " + pizza + "\n");
+
+		pizza = chicagoStore.orderPizza("clam");
+		System.out.println("Joel ordered a " + pizza + "\n");
+
+		pizza = nyStore.orderPizza("pepperoni");
+		System.out.println("Ethan ordered a " + pizza + "\n");
+
+		pizza = chicagoStore.orderPizza("pepperoni");
+		System.out.println("Joel ordered a " + pizza + "\n");
+
+		pizza = nyStore.orderPizza("veggie");
+		System.out.println("Ethan ordered a " + pizza + "\n");
+
+		pizza = chicagoStore.orderPizza("veggie");
+		System.out.println("Joel ordered a " + pizza + "\n");
+
 		buyPizza("ny", "pepperoni");
 		buyPizza("chicago", "cheese");
 		buyPizza("california", "clam");

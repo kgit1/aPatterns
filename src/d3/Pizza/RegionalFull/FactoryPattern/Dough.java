@@ -1,5 +1,5 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public class Dough {
-
+public interface Dough {
+	public String toString();
 }

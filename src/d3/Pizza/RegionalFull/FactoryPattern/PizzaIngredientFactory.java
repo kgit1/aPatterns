@@ -1,6 +1,6 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public interface PizzaIngridientFactory {
+public interface PizzaIngredientFactory {
 
 	public Dough createDough();
 

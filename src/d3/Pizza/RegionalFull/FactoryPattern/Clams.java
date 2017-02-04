@@ -1,5 +1,5 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
-public class Clams {
-
+public interface Clams {
+	public String toString();
 }
