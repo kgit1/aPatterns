@@ -1,9 +1,10 @@
 package e1.ChocolateBoiler.SingletonPattern;
 
-public class ChocolateBoiler {
+public class ChocolateBoiler implements Runnable {
 
 	private boolean empty;
 	private boolean boiled;
+	private int boiler = 0;
 	private static ChocolateBoiler instance;
 
 	private ChocolateBoiler() {
@@ -24,6 +25,7 @@ public class ChocolateBoiler {
 	public void fill() {
 		if (isEmpty()) {
 			empty = false;
+			boiler += 500;
 			boiled = false;
 		}
 	}
@@ -32,6 +34,7 @@ public class ChocolateBoiler {
 	public void drain() {
 		if (!isEmpty() && isBoiled()) {
 			empty = true;
+			boiler -= 500;
 		}
 	}
 
@@ -48,6 +51,27 @@ public class ChocolateBoiler {
 
 	public boolean isBoiled() {
 		return boiled;
+	}
+
+	@Override
+	public void run() {
+		r();
+	}
+
+	public void r() {
+		for (int i = 0; i < 100; i++) {
+			System.out.println("1boiler: " + boiler);
+			fill();
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("2boiler: " + boiler);
+			boil();
+			drain();
+			System.out.println("3boiler: " + boiler);
+		}
 	}
 
 }
