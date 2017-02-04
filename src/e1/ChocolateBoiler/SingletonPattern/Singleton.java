@@ -1,4 +1,4 @@
-package e1.SingletonPattern;
+package e1.ChocolateBoiler.SingletonPattern;
 
 public class Singleton {
 	private static Singleton uniqueInstance;
