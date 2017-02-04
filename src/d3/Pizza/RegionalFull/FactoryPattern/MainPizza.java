@@ -6,52 +6,38 @@ public class MainPizza {
 
 	public static void main(String[] args) {
 
-		// PizzaStore nyPizzaStore = new NYStylePizzaStore();
-		// PizzaStore chicagoPizzaStore = new ChicagoStylePizzaStore();
-		// PizzaStore californiaPizzaStore = new CaliforniaStylePizzaStore();
-		// Pizza pizza1 = nyPizzaStore.orderPizza("pepperoni");
-		// Pizza pizza2 = chicagoPizzaStore.orderPizza("clam");
-		// Pizza pizza3 = californiaPizzaStore.orderPizza("cheese");
-		//
-		// System.out.println("==================================");
-		// System.out.println(pizza1.name);
-		// System.out.println("==================================");
-		// System.out.println(pizza2.name);
-		// System.out.println("==================================");
-		// System.out.println(pizza3.name);
-
-		PizzaStore nyStore = new NYStylePizzaStore();
-		PizzaStore chicagoStore = new ChicagoStylePizzaStore();
-
-		Pizza pizza = nyStore.orderPizza("cheese");
-		System.out.println("Ethan ordered a " + pizza + "\n");
-
-		pizza = chicagoStore.orderPizza("cheese");
-		System.out.println("Joel ordered a " + pizza + "\n");
-
-		pizza = nyStore.orderPizza("clam");
-		System.out.println("Ethan ordered a " + pizza + "\n");
-
-		pizza = chicagoStore.orderPizza("clam");
-		System.out.println("Joel ordered a " + pizza + "\n");
-
-		pizza = nyStore.orderPizza("pepperoni");
-		System.out.println("Ethan ordered a " + pizza + "\n");
-
-		pizza = chicagoStore.orderPizza("pepperoni");
-		System.out.println("Joel ordered a " + pizza + "\n");
-
-		pizza = nyStore.orderPizza("veggie");
-		System.out.println("Ethan ordered a " + pizza + "\n");
-
-		pizza = chicagoStore.orderPizza("veggie");
-		System.out.println("Joel ordered a " + pizza + "\n");
-
 		buyPizza("ny", "pepperoni");
 		buyPizza("chicago", "cheese");
 		buyPizza("california", "clam");
 		// buyPizza("california1", "clam1");
 		// buyPizza("california", "clam1");
+
+		// PizzaStore nyStore = new NYStylePizzaStore();
+		// PizzaStore chicagoStore = new ChicagoStylePizzaStore();
+		//
+		// Pizza pizza = nyStore.orderPizza("cheese");
+		// System.out.println("Ethan ordered a " + pizza + "\n");
+		//
+		// pizza = chicagoStore.orderPizza("cheese");
+		// System.out.println("Joel ordered a " + pizza + "\n");
+		//
+		// pizza = nyStore.orderPizza("clam");
+		// System.out.println("Ethan ordered a " + pizza + "\n");
+		//
+		// pizza = chicagoStore.orderPizza("clam");
+		// System.out.println("Joel ordered a " + pizza + "\n");
+		//
+		// pizza = nyStore.orderPizza("pepperoni");
+		// System.out.println("Ethan ordered a " + pizza + "\n");
+		//
+		// pizza = chicagoStore.orderPizza("pepperoni");
+		// System.out.println("Joel ordered a " + pizza + "\n");
+		//
+		// pizza = nyStore.orderPizza("veggie");
+		// System.out.println("Ethan ordered a " + pizza + "\n");
+		//
+		// pizza = chicagoStore.orderPizza("veggie");
+		// System.out.println("Joel ordered a " + pizza + "\n");
 	}
 
 	public static void buyPizza(String name, String type) {

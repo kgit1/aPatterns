@@ -10,7 +10,7 @@ public class ClamPizza extends Pizza {
 
 	@Override
 	void prepare(String name) {
-		System.out.println(name + "preparing...");
+		System.out.println(name + " preparing...");
 		dough = ingridientFactory.createDough();
 		System.out.println("Tossing " + dough + " dough");
 		sauce = ingridientFactory.createSauce();
