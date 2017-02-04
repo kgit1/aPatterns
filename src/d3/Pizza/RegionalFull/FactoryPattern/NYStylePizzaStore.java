@@ -2,6 +2,7 @@ package d3.Pizza.RegionalFull.FactoryPattern;
 
 public class NYStylePizzaStore extends PizzaStore {
 
+	// factory method
 	protected Pizza createPizza(String item) {
 		Pizza pizza = null;
 		PizzaIngredientFactory ingredientFactory = new NYPizzaIngredienFactory();

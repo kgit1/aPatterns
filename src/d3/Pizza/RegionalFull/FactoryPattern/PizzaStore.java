@@ -1,10 +1,12 @@
 package d3.Pizza.RegionalFull.FactoryPattern;
 
+//factory method here
 public abstract class PizzaStore {
 
 	public PizzaStore() {
 	}
 
+	// factory method
 	public Pizza orderPizza(String type) {
 		Pizza pizza;
 		pizza = createPizza(type);
