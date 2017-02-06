@@ -1,17 +1,19 @@
 package f1.Cafee.CommandPattern;
 
 public class SimpleRemoteControl {
+	// Command Object
 	Command slot;
 
 	public SimpleRemoteControl() {
 	}
-	public void setCommand(Command command){
+
+	// set given Command object
+	public void setCommand(Command command) {
 		slot = command;
 	}
-	
-	public void buttonWasPressed(){
+
+	// invoke execute method from Command object
+	public void buttonWasPressed() {
 		slot.execute();
 	}
-	
-	
 }

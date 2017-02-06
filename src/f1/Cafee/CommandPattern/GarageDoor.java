@@ -1,9 +1,24 @@
 package f1.Cafee.CommandPattern;
 
+//some device
 public class GarageDoor {
-	
-	public void up(){
+
+	// available commands for device
+	public void up() {
 		System.out.println("Garage Door is Open");
 	}
 
+	public void down() {
+		System.out.println("Garage Door is Closed");
+	}
+
+	public void stop() {
+		System.out.println("Garage Door is Open");
+	}
+
+	public void lightOn() {
+	}
+
+	public void lightOf() {
+	}
 }
