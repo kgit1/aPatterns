@@ -1,10 +1,10 @@
 package f1.Cafee.CommandPattern;
 
-public class SimpleRemoteControl {
+public class RemoteControlSimple {
 	// Command Object
 	Command slot;
 
-	public SimpleRemoteControl() {
+	public RemoteControlSimple() {
 	}
 
 	// set given Command object

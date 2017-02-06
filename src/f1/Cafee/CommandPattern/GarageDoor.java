@@ -13,7 +13,7 @@ public class GarageDoor {
 	}
 
 	public void stop() {
-		System.out.println("Garage Door is Open");
+		System.out.println("Garage Door is Stoped");
 	}
 
 	public void lightOn() {

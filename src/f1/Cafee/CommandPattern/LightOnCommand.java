@@ -1,12 +1,12 @@
 package f1.Cafee.CommandPattern;
 
 //concrete command object
-public class LightOnCommant implements Command {
+public class LightOnCommand implements Command {
 	
 	//device
 	Light light;
 
-	public LightOnCommant(Light light) {
+	public LightOnCommand(Light light) {
 		this.light = light;
 	}
 
