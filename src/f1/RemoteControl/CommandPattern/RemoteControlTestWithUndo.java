@@ -2,8 +2,6 @@ package f1.RemoteControl.CommandPattern;
 
 public class RemoteControlTestWithUndo {
 
-	private static TV tv;
-
 	public static void main(String[] args) {
 		RemoteControlWithUndo remote = new RemoteControlWithUndo();
 
