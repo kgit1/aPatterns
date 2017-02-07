@@ -63,39 +63,46 @@ public class RemoteControlTestWithUndo {
 		remote.offButtonWasPushed(0);
 		remote.undoCommandWasPushed();
 
+		System.out.println("");
 		remote.onButtonWasPushed(1);
 		remote.undoCommandWasPushed();
 		remote.offButtonWasPushed(1);
 
+		System.out.println("");
 		remote.onButtonWasPushed(2);
 		remote.offButtonWasPushed(2);
 
+		System.out.println("");
 		remote.onButtonWasPushed(3);
 		remote.offButtonWasPushed(3);
 
+		System.out.println("");
 		remote.onButtonWasPushed(4);
 		remote.offButtonWasPushed(4);
 
+		System.out.println("");
 		remote.onButtonWasPushed(5);
 		remote.offButtonWasPushed(5);
 
+		System.out.println("");
 		remote.onButtonWasPushed(6);
 		remote.offButtonWasPushed(6);
 
+		System.out.println("");
 		remote.onButtonWasPushed(7);
 		remote.offButtonWasPushed(7);
 
+		System.out.println("");
 		remote.onButtonWasPushed(8);
 		remote.onButtonWasPushed(9);
 		remote.undoCommandWasPushed();
 		remote.offButtonWasPushed(8);
-		
-		System.out.println("==========================");
+
+		System.out.println("");
 		remote.onButtonWasPushed(10);
 		remote.undoCommandWasPushed();
-		System.out.println("==========================");
+		System.out.println("");
 		remote.onButtonWasPushed(10);
 		remote.offButtonWasPushed(10);
-
 	}
 }
