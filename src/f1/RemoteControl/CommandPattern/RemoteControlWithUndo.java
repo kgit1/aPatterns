@@ -7,11 +7,11 @@ public class RemoteControlWithUndo {
 	Command undoCommand;
 
 	public RemoteControlWithUndo() {
-		commandsOn = new Command[10];
-		commandsOff = new Command[10];
+		commandsOn = new Command[11];
+		commandsOff = new Command[11];
 
 		Command noCommand = new NoCommand();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 11; i++) {
 			commandsOn[i] = noCommand;
 			commandsOff[i] = noCommand;
 		}
@@ -33,7 +33,7 @@ public class RemoteControlWithUndo {
 		undoCommand = commandsOff[slot];
 	}
 
-	public void undoCommnadWasPushed() {
+	public void undoCommandWasPushed() {
 		undoCommand.undo();
 	}
 

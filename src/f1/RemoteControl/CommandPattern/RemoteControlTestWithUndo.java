@@ -7,7 +7,7 @@ public class RemoteControlTestWithUndo {
 
 		Light livingRoomLight = new Light("Living Room");
 		LivingRoomLightOnCommand livingRoomLightOnCommand = new LivingRoomLightOnCommand(livingRoomLight);
-		LivingRoomLightOffCommand lightOffCommand = new LivingRoomLightOffCommand(livingRoomLight);
+		LivingRoomLightOffCommand livingRoomLightOffCommand = new LivingRoomLightOffCommand(livingRoomLight);
 
 		Stereo stereo = new Stereo("Living Room");
 		StereoCommandOn stereoOn = new StereoCommandOn(stereo);
@@ -41,7 +41,12 @@ public class RemoteControlTestWithUndo {
 		CeilingFanMediumCommand ceilingFanMediumCommand = new CeilingFanMediumCommand(ceilingFan);
 		CeilingFanLowCommand ceilingFanLowCommand = new CeilingFanLowCommand(ceilingFan);
 
-		remote.setCommand(0, livingRoomLightOnCommand, lightOffCommand);
+		MultiCommand multiOnCommand = new MultiCommand(
+				new Command[] { livingRoomLightOnCommand, stereoOn, tvOnCommand, ceilingFanHighCommand });
+		MultiCommand multiOffCommand = new MultiCommand(
+				new Command[] { livingRoomLightOffCommand, stereoOff, tvOffCommand, ceilingFanOffCommand });
+
+		remote.setCommand(0, livingRoomLightOnCommand, livingRoomLightOffCommand);
 		remote.setCommand(1, stereoOn, stereoOff);
 		remote.setCommand(2, tvOnCommand, tvOffCommand);
 		remote.setCommand(3, kitchenLightOnCommand, kiLightOffCommand);
@@ -51,14 +56,15 @@ public class RemoteControlTestWithUndo {
 		remote.setCommand(7, garageDoorOpenCommand, garageDoorCloseCommand);
 		remote.setCommand(8, ceilingFanHighCommand, ceilingFanOffCommand);
 		remote.setCommand(9, ceilingFanMediumCommand, ceilingFanOffCommand);
+		remote.setCommand(10, multiOnCommand, multiOffCommand);
 		System.out.println(remote.toString());
 
 		remote.onButtonWasPushed(0);
 		remote.offButtonWasPushed(0);
-		remote.undoCommnadWasPushed();
+		remote.undoCommandWasPushed();
 
 		remote.onButtonWasPushed(1);
-		remote.undoCommnadWasPushed();
+		remote.undoCommandWasPushed();
 		remote.offButtonWasPushed(1);
 
 		remote.onButtonWasPushed(2);
@@ -81,8 +87,15 @@ public class RemoteControlTestWithUndo {
 
 		remote.onButtonWasPushed(8);
 		remote.onButtonWasPushed(9);
-		remote.undoCommnadWasPushed();
+		remote.undoCommandWasPushed();
 		remote.offButtonWasPushed(8);
+		
+		System.out.println("==========================");
+		remote.onButtonWasPushed(10);
+		remote.undoCommandWasPushed();
+		System.out.println("==========================");
+		remote.onButtonWasPushed(10);
+		remote.offButtonWasPushed(10);
 
 	}
 }
