@@ -7,11 +7,11 @@ public class RemoteControlWithUndo {
 	Command undoCommand;
 
 	public RemoteControlWithUndo() {
-		commandsOn = new Command[8];
-		commandsOff = new Command[8];
+		commandsOn = new Command[10];
+		commandsOff = new Command[10];
 
 		Command noCommand = new NoCommand();
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 10; i++) {
 			commandsOn[i] = noCommand;
 			commandsOff[i] = noCommand;
 		}

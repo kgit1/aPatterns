@@ -39,6 +39,10 @@ public class RemoteControlTestWithUndo {
 		GarageLightOnCommand garageLightOnCommand = new GarageLightOnCommand(garageLight);
 		GarageLightOffCommand gaLightOffCommand = new GarageLightOffCommand(garageLight);
 
+		CeilingFanHighCommand ceilingFanHighCommand = new CeilingFanHighCommand(ceilingFan);
+		CeilingFanMediumCommand ceilingFanMediumCommand = new CeilingFanMediumCommand(ceilingFan);
+		CeilingFanLowCommand ceilingFanLowCommand = new CeilingFanLowCommand(ceilingFan);
+
 		remote.setCommand(0, livingRoomLightOnCommand, lightOffCommand);
 		remote.setCommand(1, stereoOn, stereoOff);
 		remote.setCommand(2, tvOnCommand, tvOffCommand);
@@ -47,6 +51,8 @@ public class RemoteControlTestWithUndo {
 		remote.setCommand(5, hottubOnCommand, hottubOffCommand);
 		remote.setCommand(6, garageLightOnCommand, gaLightOffCommand);
 		remote.setCommand(7, garageDoorOpenCommand, garageDoorCloseCommand);
+		remote.setCommand(8, ceilingFanHighCommand, ceilingFanOffCommand);
+		remote.setCommand(9, ceilingFanMediumCommand, ceilingFanOffCommand);
 		System.out.println(remote.toString());
 
 		remote.onButtonWasPushed(0);
@@ -74,6 +80,11 @@ public class RemoteControlTestWithUndo {
 
 		remote.onButtonWasPushed(7);
 		remote.offButtonWasPushed(7);
+
+		remote.onButtonWasPushed(8);
+		remote.onButtonWasPushed(9);
+		remote.undoCommnadWasPushed();
+		remote.offButtonWasPushed(8);
 
 	}
 }
