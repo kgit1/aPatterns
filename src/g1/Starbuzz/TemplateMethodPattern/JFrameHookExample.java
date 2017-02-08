@@ -18,9 +18,9 @@ public class JFrameHookExample extends JFrame {
 		this.setVisible(true);
 	}
 
-	// hook here - paint() method, hook method - method wich has epmty or some
+	// hook here - paint() method, hook method - method which has empty or some
 	// default realization in parent class, and which we can override to
-	// implement our behavior in this part of algorithm given by parrent class
+	// implement our behavior in this part of algorithm given by parent class
 	public void paint(Graphics graphics) {
 		super.paint(graphics);
 		String msg = "I RULE!!";
