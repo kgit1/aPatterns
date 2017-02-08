@@ -1,12 +1,12 @@
 package g1.Starbuzz.TemplateMethodPattern;
 
-public class CaffeeMain {
+public class CaffeeMainWithHook {
 
 	public static void main(String[] args) {
-		Tea tea = new Tea();
+		TeaWithHook tea = new TeaWithHook();
 		tea.prepareRecipe();
 
-		Coffee coffee = new Coffee();
+		CoffeeWithHook coffee = new CoffeeWithHook();
 		coffee.prepareRecipe();
 
 	}
