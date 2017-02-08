@@ -3,18 +3,14 @@ package h2.HomeTheater.FacadePattern;
 public class PopcornPopper {
 
 	public void on() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Popper : on");
 	}
 
 	public void pop() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Popper : pop");
 	}
 
 	public void off() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Popper : off");
 	}
-
 }

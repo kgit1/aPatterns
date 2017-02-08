@@ -3,13 +3,10 @@ package h2.HomeTheater.FacadePattern;
 public class TheaterLights {
 
 	public void dim() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Lights : dim");
 	}
 
 	public void on() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Lights : on");
 	}
-
 }

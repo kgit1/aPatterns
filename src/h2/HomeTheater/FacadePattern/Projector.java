@@ -3,18 +3,14 @@ package h2.HomeTheater.FacadePattern;
 public class Projector {
 
 	public void on() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Projector : on");
 	}
 
 	public void wideScreen() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Projector : wide screen");
 	}
 
 	public void off() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Projector : off");
 	}
-
 }

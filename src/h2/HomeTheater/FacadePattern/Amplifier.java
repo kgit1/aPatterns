@@ -3,28 +3,22 @@ package h2.HomeTheater.FacadePattern;
 public class Amplifier {
 
 	public void on() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Amplifier On");
 	}
 
 	public void setDvd(DvdPlayer dvd) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Amplifier :set Dvd");
 	}
 
 	public void setSurround() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Amplifier : set Surround");
 	}
 
 	public void setVolume(int i) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Amplifier : set Volume");
 	}
 
 	public void off() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Amplifier Off");
 	}
-
 }
