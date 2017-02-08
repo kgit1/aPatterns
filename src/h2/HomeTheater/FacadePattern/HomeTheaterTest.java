@@ -9,5 +9,4 @@ public class HomeTheaterTest {
 		homeTheater.watchMovie("Sally");
 		homeTheater.endMovie();
 	}
-
 }
