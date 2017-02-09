@@ -3,7 +3,7 @@ package I1.DinnerMenu.IteratorPattern;
 import java.util.ArrayList;
 
 public class PancakeMenuIterator implements Iterator {
-	ArrayList<MenuItems> items;
+	ArrayList<MenuItem> items;
 	int position;
 
 	public PancakeMenuIterator(ArrayList items) {
@@ -20,7 +20,7 @@ public class PancakeMenuIterator implements Iterator {
 
 	@Override
 	public Object next() {
-		MenuItems menuItem = items.get(position);
+		MenuItem menuItem = items.get(position);
 		position += 1;
 		return menuItem;
 	}

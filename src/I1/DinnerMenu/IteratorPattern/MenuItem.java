@@ -1,12 +1,12 @@
 package I1.DinnerMenu.IteratorPattern;
 
-public class MenuItems {
+public class MenuItem {
 	String name;
 	String description;
 	boolean vegetarian;
 	double price;
 
-	public MenuItems(String name, String description, boolean vegetarian, double price) {
+	public MenuItem(String name, String description, boolean vegetarian, double price) {
 		this.name = name;
 		this.description = description;
 		this.vegetarian = vegetarian;
