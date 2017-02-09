@@ -1,4 +1,4 @@
-package I1.DinnerMenu.IteratorPattern;
+package I1.DinnerMenu.OwnIterator.IteratorPattern;
 
 public class DinerMenuIterator implements Iterator {
 	MenuItem[] menuItems;

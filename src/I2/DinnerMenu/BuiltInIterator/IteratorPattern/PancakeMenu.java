@@ -1,6 +1,7 @@
-package I1.DinnerMenu.IteratorPattern;
+package I2.DinnerMenu.BuiltInIterator.IteratorPattern;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PancakeMenu implements Menu {
 	ArrayList<MenuItem> menuItems;
@@ -12,7 +13,7 @@ public class PancakeMenu implements Menu {
 
 		addItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, 2.99);
 
-		addItem("Blueberry Pancakes", "Pancakes made with fresh blueberries", true, 3.49);
+		addItem("Blueberry Pancakes", "Pancakes made with fresh blueberries, and blueberry syrup", true, 3.49);
 
 		addItem("Waffles", "Waffles, with your choice of blueberries or strawberries", true, 3.59);
 	}
@@ -27,10 +28,6 @@ public class PancakeMenu implements Menu {
 	}
 
 	public Iterator createIterator() {
-		return new PancakeMenuIterator(menuItems);
-	}
-
-	public String toString() {
-		return "Objectville Pancake House Menu";
+		return menuItems.iterator();
 	}
 }

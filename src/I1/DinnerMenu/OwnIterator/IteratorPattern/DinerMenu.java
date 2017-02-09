@@ -1,4 +1,4 @@
-package I1.DinnerMenu.IteratorPattern;
+package I1.DinnerMenu.OwnIterator.IteratorPattern;
 
 public class DinerMenu implements Menu{
 	static final int MAX_ITEMS = 6;

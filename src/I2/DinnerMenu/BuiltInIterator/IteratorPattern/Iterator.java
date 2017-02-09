@@ -1,4 +1,4 @@
-package I1.DinnerMenu.IteratorPattern;
+package I2.DinnerMenu.BuiltInIterator.IteratorPattern;
 
 public interface Iterator {
 
