@@ -4,16 +4,22 @@ public class DinnerMenuIterator implements Iterator {
 	MenuItems[] items;
 	int position;
 
+	public DinnerMenuIterator(MenuItems[] items) {
+		this.items = items;
+	}
+
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
+		if (position >= items.length || items[position] == null) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public Object next() {
-		// TODO Auto-generated method stub
-		return null;
+		MenuItems menuItem = items[position];
+		position += 1;
+		return menuItem;
 	}
-
 }
