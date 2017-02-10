@@ -1,4 +1,4 @@
-package I3.DinnerMenu.ComponentPattern.copy;
+package I3.DinnerMenu.CompositePattern;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package I3.DinnerMenu.ComponentPattern.copy;
+package I3.DinnerMenu.CompositePattern;
 
 public class MenuItem extends MenuComponent {
 	String name;
