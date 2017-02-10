@@ -1,6 +1,6 @@
 package I3.DinnerMenu.ComponentPattern.copy;
 
-public class MenuComponent {
+public abstract class MenuComponent {
 
 	public void add(MenuComponent menuComponent) {
 		throw new UnsupportedOperationException();
