@@ -60,4 +60,41 @@ public class GumballMachine {
 		}
 	}
 
+	// method for turning the crunk
+	public void turnCrunk() {
+		if (state == SOLD) {
+			System.out.println("Turning twice doesn't get you another gumball!");
+		} else if (state == NO_QUARTER) {
+			System.out.println("You turned but there's no quarter");
+		} else if (state == SOLD_OUT) {
+			System.out.println("You turned, but htere's no gumballs");
+		} else if (state == HAS_QUARTER) {
+			System.out.println("You turned...");
+			state = SOLD;
+			dispence();
+		}
+	}
+
+	// method for dispensing gumball from machine
+	public void dispence() {
+		if (state == SOLD) {
+			System.out.println("A gumball comes rolling out the slot");
+			count -= 1;
+			if (count == 0) {
+				System.out.println("ooops, out of gumballs");
+				state = SOLD_OUT;
+			} else {
+				state = NO_QUARTER;
+			}
+
+			// machine rechecking conditions and throws error if finds them
+		} else if (state == NO_QUARTER) {
+			System.out.println("You need to pay first");
+		} else if (state == SOLD_OUT) {
+			System.out.println("No gumball dispensed");
+		} else if ((state == HAS_QUARTER)) {
+			System.out.println("No gumball dispensed");
+		}
+	}
+
 }
