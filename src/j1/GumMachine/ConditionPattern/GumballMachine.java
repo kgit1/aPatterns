@@ -60,8 +60,8 @@ public class GumballMachine {
 		}
 	}
 
-	// method for turning the crunk
-	public void turnCrunk() {
+	// method for turning the crank
+	public void turnCrank() {
 		if (state == SOLD) {
 			System.out.println("Turning twice doesn't get you another gumball!");
 		} else if (state == NO_QUARTER) {
@@ -97,4 +97,40 @@ public class GumballMachine {
 		}
 	}
 
+	@Override
+	public String toString() {
+		StringBuffer result = new StringBuffer();
+		result.append("\nMighty Gumball, Inc.");
+		result.append("\nJava-enabled Standing Gumball Model #2004\n");
+		result.append("Inventory: " + count + " gumball");
+		if (count != 1) {
+			result.append("s");
+		}
+		result.append("\nMachine is ");
+		if (state == SOLD_OUT) {
+			result.append("sold out");
+		} else if (state == NO_QUARTER) {
+			result.append("waiting for quarter");
+		} else if (state == HAS_QUARTER) {
+			result.append("waiting for turn of crank");
+		} else if (state == SOLD) {
+			result.append("delivering a gumball");
+		}
+		result.append("\n");
+		return result.toString();
+	}
+	
+	// @Override
+	// public String toString() {
+	// String string = "\nMighty Gumball, Inc.\nJava-enabled Standing Gumball
+	// Machine\nInventory: " + count
+	// + " gumballs";
+	//
+	// if (state == SOLD_OUT) {
+	// string += "\nMachine is sold out\n";
+	// } else {
+	// string += "\nMachine is waiting for quarter\n";
+	// }
+	// return string;
+	// }
 }
