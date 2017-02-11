@@ -41,4 +41,23 @@ public class GumballMachine {
 		}
 	}
 
+	// method for ejecting coin, if buyer trying to return coin
+	public void ejectQuarter() {
+		// if machine has coin inside, and process hasn't started yet
+		// coin returned and machine returns to state - NO_QUArTER
+		if (state == HAS_QUARTER) {
+			System.out.println("Quarter returned");
+			state = NO_QUARTER;
+			// if machine hasn't quarter inside, can't return
+		} else if (state == NO_QUARTER) {
+			System.out.println("You haven't isert a quarter");
+			// if quarter inside but process of giving gumball already started
+		} else if (state == SOLD) {
+			System.out.println("Sorry, you already turned the crank");
+			// if machine empty, doesn't taking coins so can't be any inside
+		} else if (state == SOLD_OUT) {
+			System.out.println("You can't eject, yo haven't iserted coin yet");
+		}
+	}
+
 }
