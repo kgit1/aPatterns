@@ -65,7 +65,7 @@ public class GumballMachine {
 		if (state == SOLD) {
 			System.out.println("Turning twice doesn't get you another gumball!");
 		} else if (state == NO_QUARTER) {
-			System.out.println("You turned but there's no quarter");
+			System.out.println("You turned, but there's no quarter");
 		} else if (state == SOLD_OUT) {
 			System.out.println("You turned, but htere's no gumballs");
 		} else if (state == HAS_QUARTER) {

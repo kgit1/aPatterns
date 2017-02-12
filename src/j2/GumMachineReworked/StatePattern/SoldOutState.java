@@ -2,6 +2,12 @@ package j2.GumMachineReworked.StatePattern;
 
 public class SoldOutState implements State {
 
+	GumballMachine gumballMachine;
+
+	public SoldOutState(GumballMachine gumballMachine) {
+		this.gumballMachine = gumballMachine;
+	}
+
 	@Override
 	public void insertQuarter() {
 		// if machine state - SOLD(when coin already inside and machine in

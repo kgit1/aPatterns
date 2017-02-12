@@ -2,12 +2,18 @@ package j2.GumMachineReworked.StatePattern;
 
 public class SoldState implements State {
 
+	GumballMachine gumballMachine;
+
+	public SoldState(GumballMachine gumballMachine) {
+		this.gumballMachine = gumballMachine;
+	}
+
 	@Override
 	public void insertQuarter() {
-		System.out.println("Please wait, we're already giving you a gumball");
 		// and finally if machine state - NO_QUARTER(when machine in waiting
 		// mode and changing own state to HAS_QUARTER and starts process of
 		// giving gumball)
+		System.out.println("Please wait, we're already giving you a gumball");
 	}
 
 	@Override

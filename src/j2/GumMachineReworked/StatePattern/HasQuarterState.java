@@ -2,6 +2,12 @@ package j2.GumMachineReworked.StatePattern;
 
 public class HasQuarterState implements State {
 
+	GumballMachine gumballMachine;
+
+	public HasQuarterState(GumballMachine gumballMachine) {
+		this.gumballMachine = gumballMachine;
+	}
+
 	@Override
 	public void insertQuarter() {
 		// if machine state - SOLD_OUT(when count of gumballs equals ZERO)
