@@ -17,12 +17,13 @@ public class HasQuarterState implements State {
 	@Override
 	public void ejectQuarter() {
 		System.out.println("Quarter returned");
+		gumballMachine.setState(gumballMachine.getNoQuarterState());
 	}
 
 	@Override
 	public void turnCrank() {
 		System.out.println("You turned...");
-		dispence();
+		gumballMachine.setState(gumballMachine.getSoldState());
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class SoldOutState implements State {
 
 	@Override
 	public void turnCrank() {
-		System.out.println("You turned, but htere's no gumballs");
+		System.out.println("You turned, but there's no gumballs");
 	}
 
 	@Override
