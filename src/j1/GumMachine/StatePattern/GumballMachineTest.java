@@ -1,4 +1,4 @@
-package j1.GumMachine.ConditionPattern;
+package j1.GumMachine.StatePattern;
 
 public class GumballMachineTest {
 
