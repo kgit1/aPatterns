@@ -4,26 +4,23 @@ public class SoldOutState implements State {
 
 	@Override
 	public void insertQuarter() {
-		// TODO Auto-generated method stub
-
+		// if machine state - SOLD(when coin already inside and machine in
+		// process of giving gumball)
+		System.out.println("You can't insert a quarter, the machine is sold out");
 	}
 
 	@Override
 	public void ejectQuarter() {
-		// TODO Auto-generated method stub
-
+		System.out.println("You can't eject, yo haven't iserted coin yet");
 	}
 
 	@Override
 	public void turnCrank() {
-		// TODO Auto-generated method stub
-
+		System.out.println("You turned, but htere's no gumballs");
 	}
 
 	@Override
 	public void dispence() {
-		// TODO Auto-generated method stub
-
+		System.out.println("No gumball dispensed");
 	}
-
 }
