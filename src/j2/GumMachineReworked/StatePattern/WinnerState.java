@@ -29,7 +29,7 @@ public class WinnerState implements State {
 
 	@Override
 	public void dispence() {
-		System.out.println("YOU'RE THE WINNER! YOu get two gumbaslls for your quarter");
+		System.out.println("YOU'RE THE WINNER! YOu get two gumbaslls for your quarter=====================");
 		gumballMachine.releaseBall();
 		if (gumballMachine.getCount() == 0) {
 			gumballMachine.setState(gumballMachine.soldOutState);
