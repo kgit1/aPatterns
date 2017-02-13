@@ -19,6 +19,7 @@ public class GumballMachine {
 		if (numberOfGumBalls > 0) {
 			state = noQuarterState;
 		}
+		count = numberOfGumBalls;
 	}
 
 	// method for inserting coin to the machine
@@ -39,7 +40,7 @@ public class GumballMachine {
 
 	// releaseBall method
 	public void releaseBall() {
-		System.out.println("A gymball comes rolling out hte slot..");
+		System.out.println("A gymball comes rolling out the slot..");
 		if (count != 0) {
 			count -= 1;
 		}
