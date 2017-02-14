@@ -1,4 +1,4 @@
-package k1.GumMachineReworked.MonitorPattern;
+package j2.GumMachine.StatePattern;
 
 public class HasQuarterState implements State {
 

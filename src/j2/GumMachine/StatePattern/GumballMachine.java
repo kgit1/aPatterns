@@ -1,4 +1,4 @@
-package k1.GumMachineReworked.MonitorPattern;
+package j2.GumMachine.StatePattern;
 
 public class GumballMachine {
 
@@ -7,11 +7,13 @@ public class GumballMachine {
 	State hasQuarterState;
 	State soldState;
 	State winnerState;
+	String location;
 
 	State state = soldOutState;
 	int count = 0;
 
-	public GumballMachine(int numberOfGumBalls) {
+	public GumballMachine(String location, int numberOfGumBalls) {
+		this.location = location;
 		soldOutState = new SoldOutState(this);
 		noQuarterState = new NoQuarterState(this);
 		hasQuarterState = new HasQuarterState(this);
@@ -45,6 +47,10 @@ public class GumballMachine {
 		if (count != 0) {
 			count -= 1;
 		}
+	}
+
+	public String getLocation() {
+		return location;
 	}
 
 	public void refill(int count) {

@@ -1,4 +1,4 @@
-package j2.GumMachineReworked.StatePattern;
+package j2.GumMachine.StatePattern;
 
 public class GumballMonitor {
 

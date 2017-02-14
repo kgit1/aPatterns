@@ -1,4 +1,4 @@
-package j1.GumMachine.StatePattern;
+package j1.GumMachine;
 
 public class GumballMachine {
 

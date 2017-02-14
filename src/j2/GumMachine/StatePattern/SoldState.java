@@ -1,10 +1,10 @@
-package k1.GumMachineReworked.MonitorPattern;
+package j2.GumMachine.StatePattern;
 
-public class WinnerState implements State {
+public class SoldState implements State {
 
 	GumballMachine gumballMachine;
 
-	public WinnerState(GumballMachine gumballMachine) {
+	public SoldState(GumballMachine gumballMachine) {
 		this.gumballMachine = gumballMachine;
 	}
 
@@ -29,17 +29,16 @@ public class WinnerState implements State {
 
 	@Override
 	public void dispence() {
-		System.out.println("YOU'RE THE WINNER! YOu get two gumbaslls for your quarter=====================");
 		gumballMachine.releaseBall();
-		if (gumballMachine.getCount() == 0) {
-			gumballMachine.setState(gumballMachine.soldOutState);
-		}
 		if (gumballMachine.getCount() > 0) {
-			gumballMachine.releaseBall();
 			gumballMachine.setState(gumballMachine.getNoQuarterState());
 		} else {
 			System.out.println("Ooops, out of gumballs");
 			gumballMachine.setState(gumballMachine.getSoldOutState());
 		}
+	}
+	
+	public String toString() {
+		return "dispensing a gumball";
 	}
 }

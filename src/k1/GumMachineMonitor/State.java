@@ -1,4 +1,4 @@
-package j2.GumMachineReworked.StatePattern;
+package k1.GumMachineMonitor;
 
 public interface State {
 
