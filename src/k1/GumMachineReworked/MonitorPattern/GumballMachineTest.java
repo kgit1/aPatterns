@@ -1,10 +1,10 @@
-package j2.GumMachineReworked.StatePattern;
+package k1.GumMachineReworked.MonitorPattern;
 
 public class GumballMachineTest {
 
 	public static void main(String[] args) {
 
-		GumballMachine gumballMachine = new GumballMachine("Colorado", 15);
+		GumballMachine gumballMachine = new GumballMachine(15);
 
 		System.out.println(gumballMachine);
 
