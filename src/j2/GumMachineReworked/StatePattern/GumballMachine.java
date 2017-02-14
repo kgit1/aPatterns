@@ -47,6 +47,11 @@ public class GumballMachine {
 		}
 	}
 
+	public void refill(int count) {
+		this.count = count;
+		state = noQuarterState;
+	}
+
 	@Override
 	public String toString() {
 		StringBuffer result = new StringBuffer();

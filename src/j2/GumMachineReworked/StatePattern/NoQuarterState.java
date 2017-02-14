@@ -29,4 +29,8 @@ public class NoQuarterState implements State {
 	public void dispence() {
 		System.out.println("You need to pay first");
 	}
+
+	public String toString() {
+		return "waiting for quarter";
+	}
 }
