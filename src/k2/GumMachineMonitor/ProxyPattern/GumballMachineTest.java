@@ -6,9 +6,10 @@ import java.rmi.RemoteException;
 public class GumballMachineTest {
 
 	public static void main(String[] args) throws RemoteException {
-		
+
 		args = new String[2];
-		args[0]= "seatle 100";
+		args[0] = "santafe.mightygumball.com";
+		args[1] = "100";
 
 		GumballMachineRemote gumballMachine = null;
 		int count;
@@ -25,40 +26,5 @@ public class GumballMachineTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-//		GumballMachine gumballMachine = new GumballMachine("Colorado", 15);
-
-//		System.out.println(gumballMachine);
-//
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		System.out.println(gumballMachine);
-//
-//		System.out.println("---------------------");
-//		for (int i = 0; i < 10; i++) {
-//			gumballMachine.insertQuarter();
-//			gumballMachine.turnCrank();
-//			System.out.println(gumballMachine);
-//		}
-//		System.out.println("---------------------");
-//
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		gumballMachine.ejectQuarter();
-//		System.out.println(gumballMachine);
-//
-//		gumballMachine.insertQuarter();
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		gumballMachine.insertQuarter();
-//		gumballMachine.turnCrank();
-//		System.out.println(gumballMachine);
-//
-//		GumballMonitor monitor = new GumballMonitor(gumballMachine);
-//		monitor.report();
 	}
 }
