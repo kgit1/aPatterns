@@ -8,7 +8,7 @@ public class GumballMachineTest {
 	public static void main(String[] args) throws RemoteException {
 
 		args = new String[2];
-		args[0] = "santafe.mightygumball.com";
+		args[0] = "127.0.0.1";
 		args[1] = "100";
 
 		GumballMachineRemote gumballMachine = null;

@@ -8,9 +8,9 @@ public class GumballMonitorTest {
 	public static void main(String[] args) throws RemoteException {
 
 		args = new String[2];
-		args[0] = "santafe.mightygumball.com";
+		args[0] = "127.0.0.1";
 
-		String[] location = { "rmi://santafe.mightygumball.com/gumballmachine"
+		String[] location = { "rmi://127.0.0.1"
 //				,
 //				"rmi://boulder.mightygumball.com/gumballmachine", "rmi://seattle.mightygumball.com/gumballmachine"
 				};
