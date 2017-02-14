@@ -4,7 +4,7 @@ public class GumballMachineTest {
 
 	public static void main(String[] args) {
 
-		GumballMachine gumballMachine = new GumballMachine(15);
+		GumballMachine gumballMachine = new GumballMachine("Colorado", 15);
 
 		System.out.println(gumballMachine);
 
@@ -35,5 +35,8 @@ public class GumballMachineTest {
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
 		System.out.println(gumballMachine);
+
+		GumballMonitor monitor = new GumballMonitor(gumballMachine);
+		monitor.report();
 	}
 }

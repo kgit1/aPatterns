@@ -1,4 +1,4 @@
-package j2.GumMachine.StatePattern;
+package k1.GumMachineMonitor;
 
 public class GumballMonitor {
 
@@ -13,5 +13,4 @@ public class GumballMonitor {
 		System.out.println("Current inventory : " + gumballMachine.getCount() + " gumballs");
 		System.out.println("Current state : " + gumballMachine.getState());
 	}
-
 }
