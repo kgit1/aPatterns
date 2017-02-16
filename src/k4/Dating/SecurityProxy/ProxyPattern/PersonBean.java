@@ -1,4 +1,4 @@
-package k4.Dating.DefensiveProxy.ProxyPattern;
+package k4.Dating.SecurityProxy.ProxyPattern;
 
 public interface PersonBean {
 	String getName();
