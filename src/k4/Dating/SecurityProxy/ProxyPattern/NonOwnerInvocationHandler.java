@@ -4,11 +4,11 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class OwnerInvocationHandler implements InvocationHandler {
+public class NonOwnerInvocationHandler implements InvocationHandler {
 
 	PersonBean person;
 
-	public OwnerInvocationHandler(PersonBean person) {
+	public NonOwnerInvocationHandler(PersonBean person) {
 		this.person = person;
 	}
 
@@ -18,9 +18,9 @@ public class OwnerInvocationHandler implements InvocationHandler {
 			if (method.getName().startsWith("get")) {
 				return method.invoke(person, args);
 			} else if (method.getName().equals("setHotOrNotRating")) {
-				throw new IllegalAccessException();
+				return method.invoke(person, args);
 			} else if (method.getName().startsWith("set")) {
-				return method.invoke(proxy, args);
+				throw new IllegalAccessException();
 			}
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
