@@ -20,7 +20,7 @@ public class OwnerInvocationHandler implements InvocationHandler {
 			} else if (method.getName().equals("setHotOrNotRating")) {
 				throw new IllegalAccessException();
 			} else if (method.getName().startsWith("set")) {
-				return method.invoke(proxy, args);
+				return method.invoke(person, args);
 			}
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
