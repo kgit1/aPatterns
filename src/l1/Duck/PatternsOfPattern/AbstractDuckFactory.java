@@ -10,4 +10,5 @@ public abstract class AbstractDuckFactory {
 
 	public abstract Quackable createRubberDuck();
 
+	public abstract Quackable createDecoy();
 }

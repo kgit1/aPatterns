@@ -9,7 +9,6 @@ public class Observable implements QuackObservable {
 	QuackObservable duck;
 
 	public Observable(QuackObservable duck) {
-		super();
 		this.duck = duck;
 	}
 
@@ -26,5 +25,9 @@ public class Observable implements QuackObservable {
 			Observer observer = (Observer) iterator.next();
 			observer.update(duck);
 		}
+	}
+	
+	public Iterator getObservers() {
+		return observers.iterator();
 	}
 }

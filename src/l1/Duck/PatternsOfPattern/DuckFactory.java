@@ -21,4 +21,8 @@ public class DuckFactory extends AbstractDuckFactory {
 	public Quackable createRubberDuck() {
 		return new RubberDuck();
 	}
+
+	public Quackable createDecoy() {
+		return new DecoyDuck();
+	}
 }

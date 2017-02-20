@@ -23,4 +23,23 @@ public class Flock implements Quackable {
 			quacker.quack();
 		}
 	}
+
+	@Override
+	// observer registered with help of object Observable
+	public void registerObserver(Observer observer) {
+		Iterator iterator = quackers.iterator();
+		while (iterator.hasNext()) {
+			Quackable quacker = (Quackable) iterator.next();
+			quacker.registerObserver(observer);
+		}
+	}
+
+	@Override
+	// observer notified with help of object Observable
+	public void notifyObservers() {
+	}
+
+	public String toString() {
+		return "Flock of Ducks";
+	}
 }
