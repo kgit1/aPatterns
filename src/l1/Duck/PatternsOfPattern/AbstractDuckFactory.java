@@ -8,6 +8,6 @@ public abstract class AbstractDuckFactory {
 
 	public abstract Quackable createDuckCall();
 
-	public abstract Quackable createRubberDcuk();
+	public abstract Quackable createRubberDuck();
 
 }
