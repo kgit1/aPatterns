@@ -2,6 +2,7 @@ package l1.Duck.PatternsOfPattern;
 
 //Pattern Decorator
 public class QuackCounter implements Quackable {
+	
 	Quackable quackable;
 	static int quacks;
 
@@ -14,7 +15,6 @@ public class QuackCounter implements Quackable {
 	public void quack() {
 		quackable.quack();
 		quacks++;
-
 	}
 
 	public static int getQuacks() {
