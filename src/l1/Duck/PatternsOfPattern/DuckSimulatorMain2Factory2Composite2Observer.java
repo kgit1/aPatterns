@@ -40,7 +40,7 @@ public class DuckSimulatorMain2Factory2Composite2Observer {
 
 		simulate(flockOfDucks);
 		simulate(flockOfMallards);
-		System.out.println(QuackCounter.getQuacks());
+		System.out.println(QuackCounter.getQuacks());		
 	}
 
 	void simulate(Quackable quackable) {
