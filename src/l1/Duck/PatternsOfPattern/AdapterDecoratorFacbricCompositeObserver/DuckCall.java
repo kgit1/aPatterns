@@ -1,22 +1,18 @@
-package l1.Duck.PatternsOfPattern;
+package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
 
-//Pattern Adapter
-public class GooseAdapter implements Quackable {
+public class DuckCall implements Quackable {
 
 	// every realization of observable objects has object Observable
 	Observable observable;
 
-	Goose goose;
-
-	public GooseAdapter(Goose goose) {
-		this.goose = goose;
+	public DuckCall() {
 		// create object Observable and give him reference to object MallardDuck
 		observable = new Observable(this);
 	}
 
 	@Override
 	public void quack() {
-		goose.honk();
+		System.out.println("Kwak");
 		// observers notified
 		notifyObservers();
 	}
@@ -35,7 +31,6 @@ public class GooseAdapter implements Quackable {
 
 	@Override
 	public String toString() {
-		return "Goose";
+		return "DuckCall";
 	}
-
 }

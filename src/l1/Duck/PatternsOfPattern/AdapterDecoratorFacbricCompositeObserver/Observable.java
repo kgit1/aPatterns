@@ -1,4 +1,4 @@
-package l1.Duck.PatternsOfPattern;
+package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
 
 import java.util.ArrayList;
 import java.util.Iterator;

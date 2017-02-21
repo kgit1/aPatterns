@@ -1,4 +1,4 @@
-package l1.Duck.PatternsOfPattern;
+package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
 
 //Pattern Decorator
 //decorating object of Quackable
