@@ -1,4 +1,4 @@
-package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
+package l1.Duck.PatternOfPatterns.AdapterDecoratorFacbricCompositeObserver;
 
 //extend Quackable interface with interface QuackObservable
 //now Quackable interface will ask to overrider methods for both Quackable and 

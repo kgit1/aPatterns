@@ -1,4 +1,4 @@
-package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
+package l1.Duck.PatternOfPatterns.AdapterDecoratorFacbricCompositeObserver;
 
 public class DuckSimulatorMain {
 

@@ -1,11 +1,11 @@
-package l1.Duck.PatternsOfPattern.AdapterDecoratorFacbricCompositeObserver;
+package l1.Duck.PatternOfPatterns.AdapterDecoratorFacbricCompositeObserver;
 
-public class RedheadDuck implements Quackable {
+public class MallardDuck implements Quackable {
 
 	// every realization of observable objects has object Observable
 	Observable observable;
 
-	public RedheadDuck() {
+	public MallardDuck() {
 		// create object Observable and give him reference to object MallardDuck
 		observable = new Observable(this);
 	}
@@ -31,6 +31,6 @@ public class RedheadDuck implements Quackable {
 
 	@Override
 	public String toString() {
-		return "RedheadDuck";
-	}
+		return "MallardDuck";
+	}	
 }
