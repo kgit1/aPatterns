@@ -2,4 +2,13 @@ package l2.DJMix.PatternOfPatterns.MVC.ModelViewController;
 
 public interface ControllerInterface {
 
+	void start();
+
+	void stop();
+
+	void increaseBPM();
+
+	void decreaseBPM();
+
+	void setBPM(int bpm);
 }
