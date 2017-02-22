@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -129,6 +130,68 @@ public class DJView implements ActionListener, BeatObserver, BPMObserver {
 		buttonPanel.add(decreaseBPMButton);
 		buttonPanel.add(increaseBPMButton);
 
+		JPanel enterPanel = new JPanel(new GridLayout(1, 2));
+		enterPanel.add(bpmLabel);
+		enterPanel.add(bpmTextField);
+
+		JPanel insideControlPanel = new JPanel(new GridLayout(3, 1));
+		insideControlPanel.add(enterPanel);
+		insideControlPanel.add(setBPMButton);
+		insideControlPanel.add(buttonPanel);
+		controlPanel.add(insideControlPanel);
+
+		bpmLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		bpmOutputLabel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+		controlFrame.getRootPane().setDefaultButton(setBPMButton);
+		controlFrame.getContentPane().add(controlPanel, BorderLayout.CENTER);
+
+		// Causes this Window to be sized to fit the preferred size and layouts
+		// of its subcomponents. The resulting width and height of the window
+		// are automatically enlarged if either of dimensions is less than the
+		// minimum size as specified by the previous call to the setMinimumSize
+		// method
+		controlFrame.pack();
+		// make controlFrame frame(window) - visible
+		controlFrame.setVisible(true);
+	}
+
+	public void enableStopMenu() {
+		// setEnabled() - enables or disables the menu item
+		stopMenuItem.setEnabled(true);
+	}
+
+	public void disableStopMenuItem() {
+		// setEnabled() - enables or disables the menu item
+		stopMenuItem.setEnabled(false);
+	}
+
+	public void enableStartMenu() {
+		// setEnabled() - enables or disables the menu item
+		startMenuItem.setEnabled(true);
+	}
+
+	public void disableStartMenuItem() {
+		// setEnabled() - enables or disables the menu item
+		startMenuItem.setEnabled(false);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		// event.getSource() - returns:The object on which the Event
+		// initially occurred
+		if (event.getSource() == setBPMButton) {
+			int bpm = Integer.parseInt(bpmTextField.getText());
+			controller.setBPM(bpm);
+			// event.getSource() - returns:The object on which the Event
+			// initially occurred
+		} else if (event.getSource() == increaseBPMButton) {
+			controller.increaseBMP();
+			// event.getSource() - returns:The object on which the Event
+			// initially occurred
+		} else if (event.getSource() == decreaseBPMButton) {
+			controller.decreaseBMP();
+		}
 	}
 
 	public void updateBPM() {
@@ -142,12 +205,6 @@ public class DJView implements ActionListener, BeatObserver, BPMObserver {
 
 	public void updateBeat() {
 		beatBar.setValue(100);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
