@@ -30,6 +30,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 	@Override
 	// start sequencer
 	public void on() {
+		System.out.println("Starting the sequencer");
 		sequencer.start();
 		setBPM(90);
 	}
@@ -62,14 +63,6 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		beatObservers.add(o);
 	}
 
-	@Override
-	public void removeObservr(BeatObserver o) {
-		int i = beatObservers.indexOf(o);
-		if (i >= 0) {
-			beatObservers.remove(i);
-		}
-	}
-
 	public void notifyBeatObservers() {
 		for (int i = 0; i < beatObservers.size(); i++) {
 			BeatObserver observer = beatObservers.get(i);
@@ -82,14 +75,6 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		bpmObservers.add(o);
 	}
 
-	@Override
-	public void removeObserver(BPMObserver o) {
-		int i = bpmObservers.indexOf(o);
-		if (i >= 0) {
-			bpmObservers.remove(i);
-		}
-	}
-
 	public void notifyBPMObservers() {
 		for (int i = 0; i < bpmObservers.size(); i++) {
 			BPMObserver observer = bpmObservers.get(i);
@@ -98,10 +83,33 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 	}
 
 	@Override
+	public void removeObservr(BeatObserver o) {
+		int i = beatObservers.indexOf(o);
+		if (i >= 0) {
+			beatObservers.remove(i);
+		}
+	}
+
+	@Override
+	public void removeObserver(BPMObserver o) {
+		int i = bpmObservers.indexOf(o);
+		if (i >= 0) {
+			bpmObservers.remove(i);
+		}
+	}
+
+	@Override
+	// How can I loop a Sequence? There are several ways to do this: The obvious
+	// approach is to register a MetaEventListener with the Sequencer and wait
+	// for the end of track message (meta message 47). Once you receive this
+	// message, set the position to 0 and call start() again. The problem with
+	// this approach is that there is a small delay each time the Sequencer is
+	// restarted.
 	public void meta(MetaMessage meta) {
 		sequencer.setMicrosecondPosition(0);
-		if (meta.getType() == 46) {
+		if (meta.getType() == 47) {
 			beatEvent();
+			System.out.println("meta method");
 			sequencer.start();
 			setBPM(getBPM());
 		}
@@ -115,6 +123,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 			sequence = new Sequence(Sequence.PPQ, 4);
 			track = sequence.createTrack();
 			sequencer.setTempoInBPM(getBPM());
+//			sequencer.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -126,6 +135,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		sequence.deleteTrack(null);
 		track = sequence.createTrack();
 
+		beatEvent();
 		makeTracks(trackList);
 		// (192, 9, 1, 0, 4) - 192 mean change instrument,
 		// 9- instrument before changed, and 1 - instrument after change
