@@ -13,16 +13,21 @@ public class BeatBar extends JProgressBar implements Runnable {
 	}
 
 	public void run() {
-		for (;;) {
+		for (int i = 0; i < 100; i++) {
 			int value = getValue();
-			value = (int) (value * .75);
+			// if(value<50){
+			// value=75;
+			// }else{
+			// value=25;
+			// }
+			value = (int) (value * 0.75);
 			setValue(value);
 			repaint();
+//			System.out.println("1 " + value);
 			try {
-				Thread.sleep(50);
+				Thread.sleep(200);
 			} catch (Exception e) {
 			}
-			;
 		}
 	}
 }

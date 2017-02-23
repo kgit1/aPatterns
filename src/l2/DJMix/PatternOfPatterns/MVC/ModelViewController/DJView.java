@@ -60,11 +60,14 @@ public class DJView implements ActionListener, BeatObserver, BPMObserver {
 		beatBar = new BeatBar();
 		beatBar.setValue(0);
 		JPanel bpmPanel = new JPanel(new GridLayout(2, 1));
+		bpmPanel.setSize(new Dimension(300, 400));
 		bpmPanel.add(beatBar);
 		bpmPanel.add(bpmOutputLabel);
 		viewPanel.add(bpmPanel);
+		viewPanel.setSize(new Dimension(300, 400));
 		viewFrame.getContentPane().add(viewPanel, BorderLayout.CENTER);
 		viewFrame.pack();
+		viewFrame.setSize(new Dimension(300, 400));
 		viewFrame.setVisible(true);
 	}
 
@@ -113,6 +116,7 @@ public class DJView implements ActionListener, BeatObserver, BPMObserver {
 		controlFrame.setJMenuBar(menuBar);
 
 		bpmTextField = new JTextField(2);
+		bpmTextField.setText("0");
 		// SwingConstants - a collection of constants generally used for
 		// positioning and orienting components on the screen.
 		// RIGHT - box-orientation constant used to specify the right side of a
@@ -205,7 +209,6 @@ public class DJView implements ActionListener, BeatObserver, BPMObserver {
 	}
 
 	public void updateBeat() {
-		beatBar.setValue(100);
+		beatBar.setValue(Integer.parseInt(bpmLabel.getText()));
 	}
-
 }

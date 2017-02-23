@@ -99,7 +99,8 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 
 	@Override
 	public void meta(MetaMessage meta) {
-		if (meta.getType() == 47) {
+		sequencer.setMicrosecondPosition(0);
+		if (meta.getType() == 46) {
 			beatEvent();
 			sequencer.start();
 			setBPM(getBPM());
@@ -126,6 +127,8 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		track = sequence.createTrack();
 
 		makeTracks(trackList);
+		// (192, 9, 1, 0, 4) - 192 mean change instrument,
+		// 9- instrument before changed, and 1 - instrument after change
 		track.add(makeEvent(192, 9, 1, 0, 4));
 		try {
 			sequencer.setSequence(sequence);
@@ -139,7 +142,14 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 			int key = list[i];
 
 			if (key != 0) {
+				// put message into instruction
+				// 144 -(start playing the note)type of the message
+				// 9 - use channel number 9 (means instrument (0 - 15))
+				// 100 - the note (0 - 127)
+				// i - speed and power of keystroke(nazatiya klavishi)
+				System.out.println("track");
 				track.add(makeEvent(144, 9, key, 100, i));
+				// 128 in message means end of the note
 				track.add(makeEvent(128, 9, key, 100, i + 1));
 			}
 		}
