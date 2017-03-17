@@ -24,7 +24,8 @@ public class Sequence {
 		// System.out.println("\n=====" + dbl_linear2(50));
 		// // dbl_linear2(50);
 
-		timeTest();
+		// timeTest();
+		dbl_linear3(5000);
 
 	}
 
@@ -63,7 +64,7 @@ public class Sequence {
 		int temp2 = 0;
 		while (temp1 <= n) {
 			temp2 = (int) iterator.next();
-//			System.out.println(temp2);
+			// System.out.println(temp2);
 			temp1++;
 		}
 		return temp2;
@@ -85,58 +86,60 @@ public class Sequence {
 			}
 			Collections.sort(sequence);
 		}
-//		System.out.println(sequence.toString());
+		// System.out.println(sequence.toString());
 		return sequence.get(n);
 	}
 
 	public static int dbl_linear3(int n) {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> sequence = new ArrayList<Integer>();
 		int x = 0;
 		int y = 0;
 
-		list.add(1);
-		for (; list.size() < n + 1;) {
-			int a = 2 * list.get(x) + 1;
-			int b = 3 * list.get(y) + 1;
+		sequence.add(1);
+		for (; sequence.size() < n + 1;) {
+			int a = 2 * sequence.get(x) + 1;
+			int b = 3 * sequence.get(y) + 1;
 
 			if (a < b) {
-				list.add(a);
+				sequence.add(a);				
 				x++;
 			} else if (a > b) {
-				list.add(b);
+				sequence.add(b);
 				y++;
 			} else {
-				list.add(b);
+				System.out.println("x: "+x+" y: "+y +" a: "+a+" b: "+  +b);
+				sequence.add(b);
 				x++;
 				y++;
 			}
 		}
-		return list.get(n);
+		System.out.println(sequence.toString());
+		return sequence.get(n);
 	}
 
 	public static void timeTest() {
 		long start;
+		// for (int i = 0; i < 30; i++) {
+		// start = System.currentTimeMillis();
+		// System.out.println("Result : " + dbl_linear(5000));
+		// System.out.println(System.currentTimeMillis() - start);
+		// }
+		// System.out.println("===============================================");
+		// for (int i = 0; i < 30; i++) {
+		// start = System.currentTimeMillis();
+		// System.out.println("Result : " + dbl_linear1(5000));
+		// System.out.println(System.currentTimeMillis() - start);
+		// }
+		// System.out.println("===============================================");
+		// for (int i = 0; i < 30; i++) {
+		// start = System.currentTimeMillis();
+		// System.out.println("Result : " + dbl_linear2(5000));
+		// System.out.println(System.currentTimeMillis() - start);
+		// }
+		// System.out.println("===============================================");
 		for (int i = 0; i < 30; i++) {
 			start = System.currentTimeMillis();
-			System.out.println("Result : " + dbl_linear(5000));
-			System.out.println(System.currentTimeMillis() - start);
-		}
-		System.out.println("===============================================");
-		for (int i = 0; i < 30; i++) {
-			start = System.currentTimeMillis();
-			System.out.println("Result : " + dbl_linear1(5000));
-			System.out.println(System.currentTimeMillis() - start);
-		}
-		System.out.println("===============================================");
-		for (int i = 0; i < 30; i++) {
-			start = System.currentTimeMillis();
-			System.out.println("Result : " + dbl_linear2(5000));
-			System.out.println(System.currentTimeMillis() - start);
-		}
-		System.out.println("===============================================");
-		for (int i = 0; i < 30; i++) {
-			start = System.currentTimeMillis();
-			System.out.println("Result : " + dbl_linear3(5000));
+			System.out.println("Result : " + dbl_linear3(50));
 			System.out.println(System.currentTimeMillis() - start);
 		}
 		System.out.println("===============================================");
