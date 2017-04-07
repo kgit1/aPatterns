@@ -107,7 +107,7 @@ public class Sequence {
 				sequence.add(b);
 				y++;
 			} else {
-				System.out.println("x: "+x+" y: "+y +" a: "+a+" b: "+  +b);
+//				System.out.println("x: "+x+" y: "+y +" a: "+a+" b: "+  +b);
 				sequence.add(b);
 				x++;
 				y++;
