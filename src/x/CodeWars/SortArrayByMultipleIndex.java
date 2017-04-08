@@ -1,139 +1,94 @@
 package x.CodeWars;
 
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
+
+import org.junit.Test;
 
 public class SortArrayByMultipleIndex {
 
-	public static void main(String[] args) {
-		// int[] array1 = { 2, 3, 7, 55, 22, 4, 6 };
-		// sortByValueAndIndex(array1);
-		// System.out.println("=====================");
-		// int[] array2 = { 1, 2, 3, 4, 5 };
-		// sortByValueAndIndex(array2);
-		// System.out.println("[1, 2, 3, 4, 5] " + " expected");
-		//
-		// System.out.println("=====================");
-		// int[] array3 = { 23, 2, 3, 4, 5 };
-		// sortByValueAndIndex(array3);
-		// System.out.println("[2, 3, 4, 23, 5]" + " expected");
-		//
-		// System.out.println("=====================");
-		// int[] array4 = { 26, 2, 3, 4, 5 };
-		// sortByValueAndIndex(array4);
-		// System.out.println("[2, 3, 4, 5, 26]" + " expected");
+	@Test
+	public void randomTests() {
+		for (int r = 0; r < 20; r++) {
+			// create random array
+			int n = (int) (Math.random() * 20 + 1);
+			int[] array = new int[n];
+			// fill with random numbers
+			for (int j = 0; j < n; j++) {
+				array[j] = (int) (Math.random() * 60 - 30);
+			}
+			System.out.println(Arrays.toString(array) + " randomed array");
 
-//		System.out.println("=====================");
-//		int[] array5 = { 9, 5, 1, 4, 3 };
-//		System.out.println(Arrays.toString(sortByValueAndIndex(array5)) + " actual");
-//		System.out.println("[1, 9, 5, 3, 4] " + " expected");
-		
-		System.out.println("=====================");
-		int[] array5 = { -29, -24, -28, -21, -18, -14, -8, -7, -8, -1, 24, 4, 15, 29, 24, 11, 23 };
-		System.out.println(Arrays.toString(sortByValueAndIndex(array5)) + " actual");
-		System.out.println("[-29, -24, -28, -21, -18, -14, -8, -7, -8, -1, 24, 4, 15, 29, 24, 11, 23] " + " expected");
+			// create 2 dimensional array
+			// fell with numbers of first array and their multiplication by
+			// index
+			int[][] arrayWithProd = new int[array.length][];
+			for (int i = 0; i < array.length; i++) {
+				arrayWithProd[i] = new int[2];
+				arrayWithProd[i][0] = array[i];
+				arrayWithProd[i][1] = (i + 1) * array[i];
+			}
 
+			for (int h = 0; h < arrayWithProd.length; h++) {
+				for (int i = 0; i < arrayWithProd.length - 1; i++) {
+					// System.out.println(arrayWithProd[i][0]+" 1????????");
+					if (arrayWithProd[i][1] > arrayWithProd[i + 1][1]) {
+						int[] temp = arrayWithProd[i];
+						arrayWithProd[i] = arrayWithProd[i + 1];
+						arrayWithProd[i + 1] = temp;
+					}
+					// System.out.println(arrayWithProd[i][0]+" 2????????");
+				}
+			}
+
+			int[] expected = new int[array.length];
+			for (int i = 0; i < arrayWithProd.length; i++) {
+				expected[i] = arrayWithProd[i][0];
+			}
+
+			System.out.println(Arrays.toString(expected) + " expected array");
+
+			int[] actual = SortArrayByMultipleIndex.sortByValueAndIndex(array);
+			System.out.println(Arrays.toString(actual) + " our array");
+			System.out.println("===========================");
+
+			String message = "Your result:\n" + arrayToString(actual) + "\n\nExpected result:\n"
+					+ arrayToString(expected) + "\n\n";
+			assertEquals(message, arrayToString(expected), arrayToString(actual));
+		}
 	}
-
-	// public static int[] sortByValueAndIndexDirty(int[] array) {
-	// System.out.println(Arrays.toString(array) + " initial array");
-	// int[] multipliedArray = new int[array.length];
-	//
-	// // make new array with multiplied values
-	// for (int i = 0; i < array.length; i++) {
-	// multipliedArray[i] = array[i] * (i + 1);
-	// }
-	// System.out.println(Arrays.toString(multipliedArray) + " unsorted " +
-	// multipliedArray);
-	//
-	// // sort multiplied array
-	// int[] sortedMultipliedArray = Arrays.copyOf(multipliedArray,
-	// multipliedArray.length);
-	// // Arrays.copyOf(multipliedArray, multipliedArray.length);
-	//
-	// for (int i = 0; i < sortedMultipliedArray.length - 1 - i; i++) {
-	// for (int j = 0; j < sortedMultipliedArray.length - 1 - i; j++) {
-	// // System.out.println(sortedMultipliedArray[j] + " i");
-	// // System.out.println(sortedMultipliedArray[j + 1] + " i+1");
-	// if (sortedMultipliedArray[j] > sortedMultipliedArray[j + 1]) {
-	// int temp = sortedMultipliedArray[j];
-	// sortedMultipliedArray[j] = sortedMultipliedArray[j + 1];
-	// sortedMultipliedArray[j + 1] = temp;
-	// }
-	// }
-	// }
-	// System.out.println(Arrays.toString(multipliedArray) + " unsorted2 " +
-	// multipliedArray);
-	// System.out.println(Arrays.toString(sortedMultipliedArray) + " sorted " +
-	// sortedMultipliedArray);
-	//
-	// // find new indexes for array members
-	// // indexArray - position means old index - number means new index
-	// int[] indexArray = new int[array.length];
-	// for (int i = 0; i < array.length; i++) {
-	// for (int j = 0; j < array.length; j++) {
-	// // System.out.println(multipliedArray[i] + " ::: " +
-	// // sortedMultipliedArray[j]);
-	// if (multipliedArray[i] == sortedMultipliedArray[j]) {
-	// // System.out.println(i + " : " + j);
-	// indexArray[i] = j;
-	// }
-	// }
-	// }
-	//
-	// System.out.println(Arrays.toString(indexArray) + " index");
-	//
-	// int[] temp = new int[array.length];
-	// for (int i = 0; i < array.length; i++) {
-	//// array[i]=>temp[indexAraay[i]]
-	// temp[indexArray[i]] = array[i];
-	// System.out.println(i +" :i "+indexArray[i]+" :index
-	// "+array[indexArray[i]]+" new value");
-	// }
-	// System.out.println(Arrays.toString(temp) + " new sorted indexed etc");
-	// return temp;
-	// }
 
 	public static int[] sortByValueAndIndex(int[] array) {
 		int[] multipliedArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
 			multipliedArray[i] = array[i] * (i + 1);
 		}
-		int[] sortedMultipliedArray = Arrays.copyOf(multipliedArray, array.length);
-		Arrays.sort(sortedMultipliedArray);
 
-		int[] indexArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < array.length; j++) {
-				if (multipliedArray[i] == sortedMultipliedArray[j]) {
-					indexArray[i] = j;
+			for (int j = 0; j < array.length - 1 - i; j++) {
+				if (multipliedArray[j] > multipliedArray[j + 1]) {
+					int temp1 = multipliedArray[j];
+					multipliedArray[j] = multipliedArray[j + 1];
+					multipliedArray[j + 1] = temp1;
+					int temp2 = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = temp2;
 				}
 			}
 		}
-
-		int[] temp = new int[array.length];
-		for (int i = 0; i < array.length; i++) {
-			temp[indexArray[i]] = array[i];
-		}
-		return temp;
+		return array;
 	}
 
-	// public static int[] sortByValueAndIndex(int[] array) {
+	// doesn't handle duplicates
+	// public static int[] sortByValueAndIndex1(int[] array) {
 	// int[] multipliedArray = new int[array.length];
 	// for (int i = 0; i < array.length; i++) {
 	// multipliedArray[i] = array[i] * (i + 1);
 	// }
 	// int[] sortedMultipliedArray = Arrays.copyOf(multipliedArray,
-	// multipliedArray.length);
-	//
-	// for (int i = 0; i < sortedMultipliedArray.length - 1 - i; i++) {
-	// for (int j = 0; j < sortedMultipliedArray.length - 1 - i; j++) {
-	// if (sortedMultipliedArray[j] > sortedMultipliedArray[j + 1]) {
-	// int temp = sortedMultipliedArray[j];
-	// sortedMultipliedArray[j] = sortedMultipliedArray[j + 1];
-	// sortedMultipliedArray[j + 1] = temp;
-	// }
-	// }
-	// }
+	// array.length);
+	// Arrays.sort(sortedMultipliedArray);
 	//
 	// int[] indexArray = new int[array.length];
 	// for (int i = 0; i < array.length; i++) {
@@ -150,5 +105,9 @@ public class SortArrayByMultipleIndex {
 	// }
 	// return temp;
 	// }
+
+	private String arrayToString(int[] array) {
+		return Arrays.toString(array);
+	}
 
 }
