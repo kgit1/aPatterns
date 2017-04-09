@@ -1,0 +1,111 @@
+How to convert JSON String to Java object - Jackson Example
+http://javarevisited.blogspot.com/2013/02/how-to-convert-json-string-to-java-object-jackson-example-tutorial.html#ixzz4dnKJjT6C
+lib
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.0.pr2
+JSON stands for JavaScript object notation, is a lightweight text or string representation of an object and quickly becoming a popular data exchange format. Though it's pretty early to say that JSON is going to replace XML as popular data interchange format, It is certainly providing an alternative. JSON represent data in two format either an object or an array. JSON object is an unordered collection of key and value, similar to String representation of hash table. On the other hand, JSON Array is an ordered collection of values. The main difference between  JSON Object and  JSON array is there representation. JSON object is started with left brace { and ends with right brace } and key values are separated using a colon (:). On the other hand, JSON Array starts with left bracket [ and ends with right bracket ] and each value is separated by comma. By looking at structure, You can write  your JSON parser to parse JSON object or array to Java object, but you don't need to. 
+
+There are lot of open source library in Java which provides tried and tested way of converting JSON String to Java object e.g. Jackson and GSON. In this Java tutorial we will see example of converting a JSON String to Java object using Jackson library
+
+How to convert JSON String to Java object using Jackson
+
+JSON String to Java Object Conversion Example using Jackson libraryIt's very easy to create Java object from JSON String using Jackson library. It's literally require two lines of code to do this, as shown in following Java example. If you look at code, most of code is for creating Java class e.g. User in this case, while code required to convert JSON String to Java object is just two lines in fromJson(String json) method. 
+
+
+This method takes an Jon String which represent a User object in JSON format and convert it into Java User object. In this Java example I have create User as nested static class for convenience, You may create a separate top level class if needed.
+
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+/*
+ * Java program to convert JSON String into Java object using Jackson library.
+ * Jackson is very easy to use and require just two lines of code to create a Java object
+ * from JSON String format.
+ *
+ * @author http://javarevisited.blogspot.com
+ */
+public class JsonToJavaConverter {
+
+        private static Logger logger = Logger.getLogger(JsonToJavaConverter.class);
+      
+      
+        public static void main(String args[]) throws JsonParseException
+                                                    , JsonMappingException, IOException{
+
+                JsonToJavaConverter converter = new JsonToJavaConverter();
+              
+                String json = "{\n" +
+                "    \"name\": \"Garima\",\n" +
+                "    \"surname\": \"Joshi\",\n" +
+                "    \"phone\": 9832734651}";
+              
+                //converting JSON String to Java object
+                converter.fromJson(json);
+        }
+      
+      
+        public Object fromJson(String json) throws JsonParseException
+                                                   , JsonMappingException, IOException{
+                User garima = new ObjectMapper().readValue(json, User.class);
+                logger.info("Java Object created from JSON String ");
+                logger.info("JSON String : " + json);
+                logger.info("Java Object : " + garima);
+              
+                return garima;
+        }
+      
+      
+        public static class User{
+                private String name;
+                private String surname;
+                private long phone;
+              
+                public String getName() {return name;}
+                public void setName(String name) {this.name = name;}
+
+                public String getSurname() {return surname;}
+                public void setSurname(String surname) {this.surname = surname;}
+
+                public long getPhone() {return phone;}
+                public void setPhone(long phone) {this.phone = phone;}
+
+                @Override
+                public String toString() {
+                        return "User [name=" + name + ", surname=" + surname + ", phone="
+                                        + phone + "]";
+                }
+              
+               
+        }
+}
+
+Output:
+2013-01-07 01:15:05,287 0    [main] INFO  JsonToJavaConverter  - Java Object created from JSON String
+2013-01-07 01:15:05,287 0    [main] INFO  JsonToJavaConverter  - JSON String : {
+    "name": "Garima",
+    "surname": "Joshi",
+    "phone": 9832734651}
+2013-01-07 01:15:05,287 0    [main] INFO  JsonToJavaConverter  - Java Object : User [name=Garima, surname=Joshi, phone=9832734651]
+
+
+Dependency
+As I said, You can either use Jackson or Gson to convert JSON String to Java object and in this Java tutorial we have used Jackson library for JSON to Java object conversion. If you are using Maven for dependency management than you can add following dependency in POM.xml :
+
+<dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-xc</artifactId>
+      <version>1.9.11</version>
+</dependency>
+
+Or you can simply add following JAR files into your application’s classpath :
+
+jackson-xc-1.9.11.jar
+jackson-core-asl-1.9.11.jar
+jackson-mapper-asl-1.9.11.jar
+
+if you are not comfortable or confused on adding multiple JAR files into classpath, then see 5 ways to add multiple JAR to Classpath in Java.
+
+That's all on How to convert JSON String to Java object using Jackson library. Though, this is a trivial example and actual object could be more complex, it demonstrate the process of creating Java object from JSON String. You can also use other JSON library like GSON instead of Jackson to convert JSON String to Java object. Full list of JSON libraries are available on http://www.json.org/.

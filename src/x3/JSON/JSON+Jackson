@@ -1,0 +1,200 @@
+How to Convert Map to JSON to HashMap in Java? Example Tutorial
+http://javarevisited.blogspot.com/2017/04/how-to-convert-map-to-json-to-hashmap-in-java.html#ixzz4dnJKWtf1
+lib
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.0.pr2
+In the last couple of years, JSON slowly took over XML as preferred format to transfer data from client to server and vice-versa. Because of increasing usage of JSON, Java developers are also getting a good exposure of JSON. If you are writing web services e.g. traditional GET based services, or modern RESTful web service, you also have to provide support for JSON format along with TEXT and XML. Though standard Java API doesn't support encoding and decoding of JSON from Java Object, there are a bunch of good open source JSON libraries available to Java developers. Jackson and GSON are two of the most popular such library to deal with JSON data in Java.   They not only allow you to parse JSON String to Java Object but also to create JSON formatted String from Java object. They also provide utilities to deal with formatting and other day-to-day features you need to deal with JSON formatted data.
+
+One of such feature is to directly convert a JSON response to java.util.Map object. Since JSON is also a key value pair, it seems easy to convert it into a Map, a Java data structure for holding key value pair, but if you have to do it manually then it's a pain because you have to go with every JSON element, extract it and then put it into a HashMap. Thankfully, you don't need to do that because Jackson provides features to convert JSON String to Map in Java.
+
+In this Java JSON tutorial, we are going to first learn how to convert a Java HashMap to a JSON String by using the Jackson's JSON Parsing API. In the second part, we'll convert the JSON String to Java HashMap objects, which is similar to receiving a JSON response from web service and then creating an HashMap of domain objects from them. Converting Map to/from JSON comes naturally because they have a pretty similar representation and usage.
+
+
+
+
+What is JSON and Jackson library?
+
+For those, who are not familiar with JSON, it's way to represent your data similar to XML where you can define custom tags to specify your data. In the case of JSON, it's just a key-value pairs but it also provides JSON arrays to represent list values as shown below:
+
+When you compare this to XML, it's very concise because there is no opening and closing tags hence for a large amount of data, JSON is much smaller than XML.
+
+Now, suppose you are writing web services to send details of products to client e.g. programming books. Let's say client send a book to give all Java programming books, now you can return all books in whatever format client requests e.g. Text, XML, or JSON. For XML, you can use JAXB and another XML marshaling and unmarshalling utility comes in Java but how do you convert a list of those Java object to JSON formatted String?
+
+The answer is by using open source JSON parsing libraries like Jackson or Gson. Jackson is one of the most feature rich, fast, and zero-dependency library i.e. does not rely on other packages beyond JDK. It provides JSON parser/JSON generator as foundation building block and adds a powerful Data binder and Tree Model as optional add-on blocks. It also supports streaming which is essential for reading large JSON files and converting them into collection of Java object
+
+
+By using Jackson API, you can read and write JSON String either as a stream of tokens (Streaming API), as Plain Old Java Objects (POJOs, data bind) or as Trees (Tree Model) in your Java application. It also provides pretty print functionality to nicely format JSON String for increased readability and troubleshooting.
+
+One of the big problems is to identify which Jackson JAR file to download or add as a dependency in your pom.xml file. There are lots and lots of Jackson API jars, which will appear if you search for "Jackson" in Eclipse Maven repository search.
+
+
+Maven Dependency for Jackson Libary
+You need to include the following dependency in your project's pom.xml file if you are using Maven to build your project:
+
+<dependency>
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-core</artifactId>
+  <version>${jackson-core-version}</version>
+</dependency>
+
+Alternatively, you can indluce following JAR files in your project's Classpath to compile and run this JSON example:
+C:\.m2\repository\org\codehaus\jackson\jackson-xc\1.9.12\jackson-xc-1.9.12.jar
+C:\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.12\jackson-core-asl-1.9.12.jar
+C:\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.12\jackson-mapper-asl-1.9.12.jar
+
+The Jackson JAR files are taken from Maven dependencies itself. If you are using Eclipse then you can see that which JAR file has been downloaded by Maven for your project by expanding Maven dependency tab in Eclipse. Btw, if you are interested in learning more about JSON format itself, then should read  Beginning JSON by Ben Smit, one of the best books to learn JSON format.
+
+How to convert HashMap to JSON in Java
+
+
+
+How to convert HashMap to JSON String in Java
+
+Here is a complete example of converting a Java Map to JSON String in Java. In order to demonstrate the example, I have first created a JSON String by converting a HashMap to JSON using Jackson API's ObjectMapper.writeValue() method. The output JSON String looks like following:
+
+{
+"friends":["Rick","Ron","Victor"],
+"name":"John",
+"mobile":847339282,
+"city":"London"
+}
+
+Here we have 3 JSON fields and one JSON array, which is for friends. Now, by using ObjectMapper's readValue() method we'll convert this JSON input to HashMap in Java. You just need to provide the JSON file and an HashMap and Jackson will take care of rest. If you want to learn more about JSON parsing in Java, you can also read How to Program Java by Dietel and Dietel.
+
+How to Convert Map to JSON in Java
+
+
+
+Java Program to convert HashMap to JSON and Vice-Versa
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+/**
+ * Java Program to convert Map to JSON String
+ *
+ * @author Javin Paul
+ */
+
+public class Testing { 
+
+  public static void main(String args[]) { 
+
+  ObjectMapper objectMapper = new ObjectMapper();
+
+  Map<String, Object> mapObject = new HashMap<String, Object>();
+
+  mapObject.put("name", "John");
+  mapObject.put("city", "London");
+  mapObject.put("mobile", 847339282);
+
+  List<Object> friends = new ArrayList<Object>();
+
+  friends.add("Rick");
+  friends.add("Ron");
+  friends.add("Victor");
+
+  mapObject.put("friends", friends);
+
+  try {
+  objectMapper.writeValue(new File("map.json"), mapObject); 
+
+  } catch (JsonGenerationException e) {
+  e.printStackTrace();
+  } catch (JsonMappingException e) {
+  e.printStackTrace();
+  } catch (IOException e) {
+  e.printStackTrace();
+  }
+
+  }
+
+}
+
+When you run this code, it will create a map.json file in your project directory, the directory from where you have run the Java command with following JSON String.
+
+{
+"friends":["Rick","Ron","Victor"],
+"name":"John",
+"mobile":847339282,
+"city":"London"
+}
+
+How to Convert Map to JSON to HashMap in Java
+
+
+
+How to convert JSON String to HashMap in Java
+This is the opposite of what we have done in the previous section, in this part I'll convert the JSON String to HashMap in Java using Jackson. This is a more common scenario if you are consuming Web Services in JSON format and created a map of users, books, orders, or any other domain objects. In this example, we'll use the JSON string created in the previous example.
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+
+/**
+ * Java Program to convert JSON String to Map
+ *
+ * @author Javin Paul
+ */
+
+public class Testing { 
+
+  public static void main(String args[]) {
+
+  ObjectMapper mapper = new ObjectMapper();
+
+ try {
+
+  File jsonFile = new File("map.json");
+  Map<String, Object> mapObject = mapper.readValue(jsonFile, 
+ new TypeReference<Map<String, Object>>() {
+  });
+
+  System.out.println("name : " + mapObject.get("name"));
+  System.out.println("city : " + mapObject.get("city"));
+  System.out.println("mobile : " + mapObject.get("mobile"));
+  System.out.print("friends : ");
+
+  List<String> list = (List<String>) mapObject.get("friends");
+
+  for (String name : list) {
+  System.out.print(name + " ");
+  }
+
+  } catch (JsonGenerationException e) {
+  e.printStackTrace();
+  } catch (JsonMappingException e) {
+  e.printStackTrace();
+  } catch (IOException e) {
+  e.printStackTrace();
+  }
+
+  }
+
+}
+
+Output:
+name : John
+city : London
+mobile : 847339282
+friends : Rick Ron Victor
+
+That's all about how to convert Map to JSON in Java and opposite, JSON String to HashMap. Once you know the right JSON library to use, your job will become much easier. No doubt, Jackson is one of the best JSON parsing library available to Java developers and you must spend some time to learn this API, it will pay in long run. If you were to learn just one JSON library, I suggest learn Jackson, because once you learn how to use Jackson properly, you can handle most of the real world requirements related to producing and parsing JSON data. 
+
+P.S - If you looking for a good book to learn about how to deal with JSON data in Java application, I suggest reading Java XML and JSON by Jeff Frierson, he explains a lot about parsing and creating JSON formatted output from Java objects.
+
+

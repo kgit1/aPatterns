@@ -3,5 +3,16 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/jackson-core-2.9.0.pr2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/D:/JavaProjects/jackson-core-2.9.0.pr2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/JavaProjects/jackson-annotations-2.9.0.pr2.jar"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/jackson-databind-2.9.0.pr2.jar" sourcepath="D:/JavaProjects/jackson-databind-2.9.0.pr2-javadoc.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/2.9.0.pr2"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
