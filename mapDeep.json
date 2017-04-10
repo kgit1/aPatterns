@@ -1,0 +1,34 @@
+{
+	"Database": {
+		"person3": {
+			"city": "London3",
+			"name": "John3",
+			"mobile": 88855522,
+			"friends": [
+				"Ron3",
+				"Garry3",
+				"Germiona3"
+			]
+		},
+		"person2": {
+			"city": "London2",
+			"name": "John2",
+			"mobile": 88822522,
+			"friends": [
+				"Ron2",
+				"Garry2",
+				"Germiona2"
+			]
+		},
+		"person1": {
+			"city": "London",
+			"name": "John",
+			"mobile": 88803522,
+			"friends": [
+				"Ron",
+				"Garry",
+				"Germiona"
+			]
+		}
+	}
+}
