@@ -7,7 +7,6 @@ import javax.websocket.ClientEndpoint;
 import javax.websocket.CloseReason;
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
-import javax.websocket.MessageHandler;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -67,7 +66,7 @@ public class ClientEndPoint {
 		this.session.getAsyncRemote().sendText(message);
 	}
 
-	// Mesage Handler
+	// Message Handler
 	public static interface MessageHandler {
 		public void handleMessage(String message);
 	}
