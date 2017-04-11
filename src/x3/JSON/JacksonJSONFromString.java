@@ -32,7 +32,7 @@ public class JacksonJSONFromString {
 		// ObjectWriter.writeValues(OutputStream).
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		// create new map object, curently hashMap
+		// create new map object, currently hashMap
 		Map<String, Object> mapObject = new HashMap<>();
 
 		// put data to map

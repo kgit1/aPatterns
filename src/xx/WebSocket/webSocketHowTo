@@ -1,0 +1,49 @@
+how to create websocket client and connect
+
+	add websocket libs javax.websocket-api-1.1.jar from
+	http://repo1.maven.org/maven2/javax/websocket/javax.websocket-api/1.1/
+	
+	create endpoint class for client and annotate it
+		@ClientEndpoint
+	
+	create objects Session and MessageHandler
+	create constructor which takes URI and creates
+	WebSocketContainer object and obtain new instance of container with
+	WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+	and try to connect container by 
+	connectToServer() method with session and uri object
+	
+	than with @OnOpen annotation
+	create onOpen() method which takes session object and sets it 
+	to objects session( just like simple setter for session)
+	
+	than with @onClose annotation
+	create onClose() method, takes session and closeReason objects
+	method - equates session to null
+	this.session = null;
+	
+	than with @OnMessage annotation
+	create onMessage() method - takes string
+	and if messageHandler is not null puts string inside
+		if (this.messageHandler != null) {
+	            this.messageHandler.handleMessage(message);
+	        } 
+
+	create method addMessageHandler - takes messageHandler and sets it to object
+	(setter for messageHandler)
+		this.messageHandler = msgHandler;     
+        
+     create method setMessage() - takes string message and invokes sendTex() method with it
+    	 this.session.getAsyncRemote().sendText(message);   
+        
+	create static interface MessageHandler with method
+		handleMessage(String message)        
+        
+   together class looks like
+   
+   	     
+        
+        
+        
+        
+        

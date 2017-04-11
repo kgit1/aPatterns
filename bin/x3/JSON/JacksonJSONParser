@@ -1,0 +1,102 @@
+The Jackson JsonParser class is a low level JSON parser. It is similar to the 
+Java StAX parser for XML, except the JsonParser parses JSON and not XML.
+
+The Jackson JsonParser works at a lower level than the Jackson ObjectMapper. 
+This makes the JsonParser faster than the ObjectMapper, but also more 
+cumbersome to work with.
+
+Creating a JsonParser
+In order to create a Jackson JsonParser you first need to create a JsonFactory. 
+The JsonFactory is used to create JsonParser instances. The JsonFactory class 
+contains several createParser() methods, each taking a different JSON source 
+as parameter.
+
+Here is an example of creating a JsonParser that parses JSON from a string:
+
+String carJson =
+        "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
+
+JsonFactory factory = new JsonFactory();
+JsonParser  parser  = factory.createParser(carJson);
+You can also pass a Reader, InputStream, URL, byte array or char array to the 
+createParser() method (actually to one of the other overloaded 
+createParser() versions).
+
+Parsing JSON With the JsonParser
+Once you have created a Jackson JsonParser you can use it to parse JSON. 
+The way the JsonParser works is by breaking the JSON up into a sequence of 
+tokens which you can iterate one by one.
+
+Here is a JsonParser example that simply loops through all the tokens and 
+print them out to System.out. This is not a very useful example, but it shows 
+you the tokens the JSON is broken up into, and it also shows you the basics of
+ how to loop through the tokens.
+
+String carJson =
+        "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
+
+JsonFactory factory = new JsonFactory();
+JsonParser  parser  = factory.createParser(carJson);
+
+while(!parser.isClosed()){
+    JsonToken jsonToken = parser.nextToken();
+
+    System.out.println("jsonToken = " + jsonToken);
+}
+As long as the isClosed() method of the JsonParser returns false, there are 
+still more tokens in the JSON source.
+
+You obtain a JsonToken using the nextToken() of the JsonParser. You can use 
+this JsonToken instance to inspect the given token. The token types are 
+represented by a set of constants in the JsonToken class. These constants are:
+
+START_OBJECT
+END_OBJECT
+START_ARRAY
+END_ARRAY
+FIELD_NAME
+VALUE_EMBEDDED_OBJECT
+VALUE_FALSE
+VALUE_TRUE
+VALUE_NULL
+VALUE_STRING
+VALUE_NUMBER_INT
+VALUE_NUMBER_FLOAT
+You can use these constants to find out what type of token the current 
+JsonToken is. You do so via the equals() method of these constants. 
+Here is an example:
+
+String carJson =
+        "{ \"brand\" : \"Mercedes\", \"doors\" : 5 }";
+
+JsonFactory factory = new JsonFactory();
+JsonParser  parser  = factory.createParser(carJson);
+
+Car car = new Car();
+while(!parser.isClosed()){
+    JsonToken jsonToken = parser.nextToken();
+
+    if(JsonToken.FIELD_NAME.equals(jsonToken)){
+        String fieldName = parser.getCurrentName();
+        System.out.println(fieldName);
+
+        jsonToken = parser.nextToken();
+
+        if("brand".equals(fieldName)){
+            car.brand = parser.getValueAsString();
+        } else if ("doors".equals(fieldName)){
+            car.doors = parser.getValueAsInt();
+        }
+    }
+}
+
+System.out.println("car.brand = " + car.brand);
+System.out.println("car.doors = " + car.doors);
+The getCurrentName() method of the JsonParser returns the current field name, 
+if the token pointed to is a field name.
+
+The getValueAsString() returns the current token value as a string, if the 
+token pointed to is a string field value. The getValueAsInt() returns the 
+current token value as an int if the token pointed to is an integer field value. 
+The JsonParser has more similar methods for obtaining the curren token value as 
+different types (e.g. boolean, short, long, float, double etc.).
