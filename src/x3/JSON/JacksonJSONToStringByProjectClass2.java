@@ -10,18 +10,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JacksonJSONToStringByProjectClass {
+public class JacksonJSONToStringByProjectClass2 {
 
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		PersonsMap persons = objectMapper.readValue(new File("mapDeep.json"), PersonsMap.class);
-
-		HashMap<String, Person> projects = persons.get("Database");
-
-		Iterator it = projects.entrySet().iterator();
-		for (Entry entry : projects.entrySet()) {
-			System.out.println(entry.getKey());
-			System.out.println(entry.getValue());
+		PersonsArray persons = objectMapper.readValue(new File("arrayPersons.json"), PersonsArray.class);
+		
+		for (Person person : persons) {
+			System.out.println(person);
 		}
 	}
 }
