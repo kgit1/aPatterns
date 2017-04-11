@@ -32,21 +32,27 @@ public class JacksonJSONFromString {
 		// ObjectWriter.writeValues(OutputStream).
 		ObjectMapper objectMapper = new ObjectMapper();
 
+		// create new map object, curently hashMap
 		Map<String, Object> mapObject = new HashMap<>();
 
+		// put data to map
 		mapObject.put("name", "John");
 		mapObject.put("city", "London");
 		mapObject.put("mobile", 847339282);
 
+		// create array and fill with data
 		List<Object> friends = new ArrayList<>();
-
 		friends.add("Rick");
 		friends.add("Morty");
 		friends.add("Germiona");
 
+		// put array to map too
 		mapObject.put("friends", friends);
 
 		try {
+			// with help of writeValue() method put map object with all data
+			// to json file by passing to writeValue()  method of the ObjectMapper
+			// object - file object and our map object
 			objectMapper.writeValue(new File("map.json"), mapObject);
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
@@ -56,8 +62,7 @@ public class JacksonJSONFromString {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	// String sorting = "{\"state\":\"desc\"}";
 	// JSONObject filter = new JSONObject(sorting);
 	//

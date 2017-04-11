@@ -15,13 +15,23 @@ import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 public class JacksonJSONToStringDeep {
 
 	public static void main(String[] args) {
+		// ObjectMapper provides functionality for reading and writing JSON,
+		// either to and from basic POJOs (Plain Old Java Objects), or to and
+		// from a general-purpose JSON Tree Model (JsonNode), as well as related
+		// functionality for performing conversions.
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println();
 
 		try {
+			// create new file object with file path
 			File jsonFile = new File("mapDeep.json");
+
+			// create map and initialize with data from json file with help of
+			// readValue() method, which takes
+			// file and type reference to create needed type of data by pattern
+			// (like map, or array) - from json file
 			Map<String, Object> mapObject = objectMapper.readValue(jsonFile, new TypeReference<Map<String, Object>>() {
 			});
+			//iterate through gotten map object level by level
 			Iterator<Entry<String, Object>> it = mapObject.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<String, Object> entry = it.next();

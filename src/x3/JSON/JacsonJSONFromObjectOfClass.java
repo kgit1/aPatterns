@@ -13,7 +13,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JacsonJSONFromObjectOfClass {
 
 	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+		// ObjectMapper provides functionality for reading and writing JSON,
+		// either to and from basic POJOs (Plain Old Java Objects), or to and
+		// from a general-purpose JSON Tree Model (JsonNode), as well as related
+		// functionality for performing conversions. 
 		ObjectMapper objectMapper = new ObjectMapper();
+		
+		//create person objects for input to json file
 		Person person1 = new Person();
 		person1.setName("Roger1");
 		person1.setCity("LasVegas1");
@@ -30,11 +36,13 @@ public class JacsonJSONFromObjectOfClass {
 		person3.setMobile("385756374");
 		person3.setFriends(new ArrayList<String>(Arrays.asList("Marry3", "Poppy3", "Biron3")));
 		
+		//put persons together to one array
 		List<Person> listOfPersons = new ArrayList<>();
 		listOfPersons.add(person1);
 		listOfPersons.add(person2);
 		listOfPersons.add(person3);
 		
+		//put array into json file
 		objectMapper.writeValue(new File("arrayPersons.json"), listOfPersons);
 
 	}
