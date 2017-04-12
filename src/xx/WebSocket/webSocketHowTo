@@ -1,8 +1,9 @@
 how to create websocket client and connect
 
-	add websocket libs javax.websocket-api-1.1.jar from
-	http://repo1.maven.org/maven2/javax/websocket/javax.websocket-api/1.1/
+	add websocket libs for client 
+	tyrus-standalone-client-1.13.jar
 	
+======================================================	
 	create endpoint class for client and annotate it
 		@ClientEndpoint
 	

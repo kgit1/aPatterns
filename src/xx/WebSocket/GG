@@ -1,0 +1,80 @@
+@indiyskiy небольшой серч в гугле помог найти тему с форума ГГ, там удалось узнать шайтан-магию.
+Авторизация в чат происходит через POST-запрос к https://goodgame.ru/ajax/chatlogin
+К примеру, на питоне это выглядит так:
+
+import requests
+
+r = requests.post("https://goodgame.ru/ajax/chatlogin", data={'login': "mysuperlogin", 'password': "megasecurepassword"})`
+
+
+У меня авторизация проходила. Правда брал токен вручную из html кода страницы GG, т.к. подумал, что токен, который приходит через апи стримов это совсем другая вещь. Очевидно я был прав.
+
+Заходишь на любую страницу ГГ залогиненым и в исходном коде ищешь секцию script с переменными, именно с этим токеном все работало:
+var AJAX_PATH = 'http://goodgame.ru/ajax';
+var AJAX_HTTPS_PATH = 'https://goodgame.ru/ajax';
+var VIEW_PATH = 'http://goodgame.ru/view';
+var WEB = 'http://goodgame.ru/';
+var CKEDITOR_BASEPATH = WEB + 'js/ckeditor/';
+var DEV = '';
+var User = '63658';
+var canRate = '1';
+var Token = 'ххххххххххххххххххххххххххххххххххххххххх';
+var NotifySettings = [];
+var Menu_Fix = '-1';
+
+
+
+Вместо https://goodgame.ru/ajax/chatlogin можно использовать https://goodgame.ru/ajax/login
+
+Форма ответа
+{
+"result": true,
+"response": "Вы успешно вошли на сайт",
+"code": 4,
+"login_page": "",
+"return": {
+"id": 123,
+"username": "Блаблабла",
+"avatar": "/files/avatars/avatar.png",
+"token": "многоцифробукв",
+"channel": {
+"id": "456",
+"title": "API test",
+"link": "https://goodgame.ru/channel/Блаблабла/",
+"streamer": "Блаблабла",
+"viewers": "0",
+"preview": "/images/ico_tv.png",
+"poster": "/images/ico_tv.png",
+"premium": false,
+"streamkey": "897",
+"status": false
+},
+"settings": {
+"chat": {
+"alignType": 0,
+"pekaMod": 0,
+"sound": 1,
+"smilesType": 4,
+"hide": 0,
+"noBan": 1,
+"isDoSounds": false,
+"isDoHide": false,
+"isDoAnimate": true,
+"isDoAlign": true,
+"isShowPeka": true,
+"customColors": {
+"5": "premium",
+"184": "premium"
+},
+"customIcons": {
+"5": "star",
+"184": "star"
+}
+}
+},
+"dialogs": 0,
+"bl": true,
+"rights": "0",
+"premium": true
+}
+}

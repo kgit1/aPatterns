@@ -1,0 +1,228 @@
+JSR 356 - Java API for Websocket (Java Client)
+The post JSR 356 - Java API for Websocket (JEE 7 with Glassfish 4.0) will walk 
+you through the creation of Websocket server endpoint and integrating it with 
+a browser based client using HTML5 websocket. In this post, I will show you 
+how you can convert a POJO to a Websocket client and integrate it with 
+Websocket Server Endpoint using Websocket Java API.
+
+Just like server end points, JSR 356 - Java API for Websocket supports 
+two different programming models for websocket clients - Annotation-driven 
+and Interface-driven. In this post, I will be concentrating on Annotation-driven 
+approach. The major annotations of our interest here are
+
+ClientEndpoint	Decorate the POJO as a Websocket Client
+OnOpen	Decorates a method as a callback for connection open event.
+OnMessage	Decorates a method as a callback for incoming messages.
+onError	Decorates a method as a callback for any error.
+onClose	Decorates a method as a callback for connection close event.
+Sample Application
+
+We are going to create a Chatbot and integrating it with the Chat Server 
+from this post. The application design is very simple - The main class is 
+ChatBot which will use a POJO (annotated with ClientEndpoint) to connect to 
+Chat server and send messages to the Chat Server every 30 seconds, and when 
+it receive another user's message from the Chat Server, it will create 
+a customized message for that user and send back to the Chat Server immediately.
+Create a simple project using Maven.
+Add the project dependancies.
+
+<dependency>
+   <groupId>javax.websocket</groupId>
+   <artifactId>javax.websocket-client-api</artifactId>
+   <version>1.0</version>
+</dependency>
+<dependency>
+   <groupId>org.glassfish.tyrus</groupId>
+   <artifactId>tyrus-client</artifactId>
+   <version>1.1</version>
+</dependency>
+<dependency>
+   <groupId>org.glassfish.tyrus</groupId>
+   <artifactId>tyrus-container-grizzly</artifactId>
+   <version>1.1</version>
+</dependency>
+<dependency>
+   <groupId>javax.json</groupId>
+   <artifactId>javax.json-api</artifactId>
+   <version>1.0</version>
+</dependency>
+<dependency>
+   <groupId>org.glassfish</groupId>
+   <artifactId>javax.json</artifactId>
+   <version>1.0.1</version>
+</dependency>
+As you know javax.websocket-client-api is the Websocket Client API while 
+tyrus-client and tyrus-container-grizzly are the reference implementation 
+of the websocket api which is available as part of Glassfish 4.0 distribution. 
+We need this for running our stand-alone client. You might have noticed that 
+the Chat Server from this post is using JSON and hence we need the dependancies 
+javax.json-api and javax.json to make our ChatBot JSON aware so that it can 
+easily communicate with the Chat Server.
+Create the Websocket Client
+
+/**
+ * ChatClientEndpoint.java
+ * http://programmingforliving.com
+ */
+package com.pfl.samples.jee7.websocket;
+ 
+import java.net.URI;
+ 
+import javax.websocket.ClientEndpoint;
+import javax.websocket.CloseReason;
+import javax.websocket.ContainerProvider;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
+ 
+/**
+ * ChatServer Client
+ * 
+ * @author Jiji_Sasidharan
+ */
+@ClientEndpoint
+public class ChatClientEndpoint {
+    Session userSession = null;
+    private MessageHandler messageHandler;
+ 
+    public ChatClientEndpoint(URI endpointURI) {
+        try {
+            WebSocketContainer container = ContainerProvider
+                    .getWebSocketContainer();
+            container.connectToServer(this, endpointURI);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+ 
+    /**
+     * Callback hook for Connection open events.
+     * 
+     * @param userSession
+     *            the userSession which is opened.
+     */
+    @OnOpen
+    public void onOpen(Session userSession) {
+        this.userSession = userSession;
+    }
+ 
+    /**
+     * Callback hook for Connection close events.
+     * 
+     * @param userSession
+     *            the userSession which is getting closed.
+     * @param reason
+     *            the reason for connection close
+     */
+    @OnClose
+    public void onClose(Session userSession, CloseReason reason) {
+        this.userSession = null;
+    }
+ 
+    /**
+     * Callback hook for Message Events. This method will be invoked when a
+     * client send a message.
+     * 
+     * @param message
+     *            The text message
+     */
+    @OnMessage
+    public void onMessage(String message) {
+        if (this.messageHandler != null)
+            this.messageHandler.handleMessage(message);
+    }
+ 
+    /**
+     * register message handler
+     * 
+     * @param message
+     */
+    public void addMessageHandler(MessageHandler msgHandler) {
+        this.messageHandler = msgHandler;
+    }
+ 
+    /**
+     * Send a message.
+     * 
+     * @param user
+     * @param message
+     */
+    public void sendMessage(String message) {
+        this.userSession.getAsyncRemote().sendText(message);
+    }
+ 
+    /**
+     * Message handler.
+     * 
+     * @author Jiji_Sasidharan
+     */
+    public static interface MessageHandler {
+        public void handleMessage(String message);
+    }
+}
+Create the main class - ChatBot
+
+/**
+ * ChatBot.java
+ * http://programmingforliving.com
+ */
+package com.pfl.samples.jee7.websocket;
+ 
+import java.io.StringReader;
+import java.net.URI;
+ 
+import javax.json.Json;
+import javax.json.JsonObject;
+ 
+/**
+ * ChatBot
+ * @author Jiji_Sasidharan
+ */
+public class ChatBot {
+ 
+    /**
+     * main
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        final ChatClientEndpoint clientEndPoint = new ChatClientEndpoint(new URI("ws://localhost:8080/jee7-websocket-api/chat"));
+        clientEndPoint.addMessageHandler(new ChatClientEndpoint.MessageHandler() {
+                    public void handleMessage(String message) {
+                        JsonObject jsonObject = Json.createReader(new StringReader(message)).readObject();
+                        String userName = jsonObject.getString("user");
+                        if (!"bot".equals(userName)) {
+                            clientEndPoint.sendMessage(getMessage("Hello " + userName +", How are you?"));
+                            // other dirty bot logic goes here.. :)
+                        }
+                    }
+                });
+ 
+        while (true) {
+            clientEndPoint.sendMessage(getMessage("Hi There!!"));
+            Thread.sleep(30000);
+        }
+    }
+ 
+    /**
+     * Create a json representation.
+     * 
+     * @param message
+     * @return
+     */
+    private static String getMessage(String message) {
+        return Json.createObjectBuilder()
+                       .add("user", "bot")
+                       .add("message", message)
+                   .build()
+                   .toString();
+    }
+}
+To see the output
+
+Start your Server (Refer this post).
+Run ChatBot class.
+Open browser and go to the Chat page (for eg, http://localhost:8080/jee7-websocket-api/)
+Send some messages from the Chat page and you will immediately see the custom message from the ChatBot

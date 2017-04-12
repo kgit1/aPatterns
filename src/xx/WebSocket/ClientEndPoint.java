@@ -51,6 +51,7 @@ public class ClientEndPoint {
 	// This method will be invoked when a client send a message.
 	@OnMessage
 	public void onMessage(String message) {
+		System.out.println(message);
 		if (this.messageHandler != null) {
 			this.messageHandler.handleMessage(message);
 		}
