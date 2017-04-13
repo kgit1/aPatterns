@@ -1,0 +1,31 @@
+response : Вы успешно вошли на сайт
+code : 4
+login_page : 
+return : false
+user_id : 120776
+token : 4aab910288c14a1fec1484876ece7332
+settings : {"alignType":0,"pekaMod":1,"sound":1,"smilesType":4,"hide":0,"noBan":1,"isDoSounds":"auto","isDoHide":false,"isDoAnimate":true,"isDoAlign":true,"isShowPeka":true,"customColors":{"184":"bronze","11577":"simple"},"customIcons":{"184":"none","11577":"none"}}
+
+
+	channels list max 50
+	{"type":"get_channels_list","data":{"start":0,"count": 50}}
+	{"type":"get_channels_list","data":{"start":51,"count": 100}}
+	{"type":"get_channels_list","data":{"start":101,"count": 150}}
+	
+	authorize on server
+	{"type":"auth","data":{"user_id":"120776","token":"4aab910288c14a1fec1484876ece7332"}}
+	
+	join on channel(Miker)
+	{"type":"join","data":{"channel_id":"5","hidden":false}}
+	
+	join on channel zerg
+	{"type":"join","data":{"channel_id":"184","hidden":false}}
+	
+	users on channel
+	{"type":"get_users_list","data": {"channel_id": "5"}}
+	
+	
+	chat on channel(zerg)
+	{"type": "get_channel_history","data": {"channel_id": "184"}}
+	
+	{"type": "send_message","data": {"channel_id": "184","text": ":peka:","hideIcon": false,"mobile": false}}

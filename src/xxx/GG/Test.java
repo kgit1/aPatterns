@@ -1,4 +1,4 @@
-package xx.WebSocket;
+package xxx.GG;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
