@@ -1,0 +1,54 @@
+How to change private static final fields
+sunday, april 09, 2017
+Sometimes you need dirty hacks. This is one that can be useful in testing 
+scenarios - how to change fields that are not meant to be changed.
+
+If we have class Knowledge with the answer for everything:
+
+public class Knowledge {
+
+    private static final Integer ANSWER = 42;
+
+    public String askQuestion(String question) {
+        return "The answer to '" + question + "' is: " + ANSWER;
+    }
+
+}
+We now want to change the answer for testing purposes:
+
+public class KnowledgeTest {
+
+    @Test
+    public void testAskQuestion() throws Exception {
+        Knowledge knowledge = new Knowledge();
+
+        String answer = knowledge.askQuestion("question?");
+        assertThat(answer, is("The answer to 'question?' is: 42"));
+
+        setFinalStaticField(Knowledge.class, "ANSWER", 41);
+
+        answer = knowledge.askQuestion("question?");
+        assertThat(answer, is("The answer to 'question?' is: 41"));
+    }
+
+    private static void setFinalStaticField(Class<?> clazz, String fieldName, Object value)
+            throws ReflectiveOperationException {
+
+        Field field = clazz.getDeclaredField(fieldName);
+        field.setAccessible(true);
+
+        Field modifiers = Field.class.getDeclaredField("modifiers");
+        modifiers.setAccessible(true);
+        modifiers.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+        field.set(null, value);
+    }
+
+}
+We make this possible by setting the field to accessible and removing the final 
+modifier. Then the field can be set using reflection.
+
+Please use this with care and only in test scopes. Also, for primitive types 
+the compiler makes use of constant folding — then such a solution has no effect.
+
+Happy (dirty) hacking :-)
