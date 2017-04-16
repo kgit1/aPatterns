@@ -28,4 +28,4 @@ settings : {"alignType":0,"pekaMod":1,"sound":1,"smilesType":4,"hide":0,"noBan":
 	chat on channel(zerg)
 	{"type": "get_channel_history","data": {"channel_id": "184"}}
 	
-	{"type": "send_message","data": {"channel_id": "184","text": ":peka:","hideIcon": false,"mobile": false}}
+	{"type": "send_message","data": {"channel_id": "184","text": ":insanepeka:","hideIcon": false,"mobile": false}}

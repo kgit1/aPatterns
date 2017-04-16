@@ -1,0 +1,161 @@
+http://javarevisited.blogspot.com/2017/04/java-program-to-multiply-two-matrices-with-example.html
+
+Java Program to Multiply Two Matrices - Matrix Multiplication Example
+How to write a Java program to multiply two matrices in Java is a very good programming exercise to get familiar with the two-dimensional array in Java. this example teaches about how to multiply arrays, how to access elements from a multi-dimensional array, how to pass them to a function etc. Since the matrix is a natural representation of multi-dimensional array in Java, they are often used to illustrate real word matrix exercises e.g. the calculating sum of two matrices or calculating the difference of two matrices etc. By the way, before writing the program, let's recap how to multiply two matrices in mathematics first. If you remember, you can only multiply two matrices if, and only if, the number of columns in the first matrix equals the number of rows in the second matrix. That is known as matrix multiplication criterion.
+
+If both matrices don't satisfy that criterion then the product of two matrices is undefined. The Product matrix's dimensions will be equal to (rows of the first matrix) x (columns of the second matrix ). For example, if we multiply a 2x3 matrix with a 3x1 matrix, then the product matrix or result matrix will be a 2x1 matrix i.e. two rows and 1 columns.
+
+I used to remember this trick by writing dimension of matrices adjacent to each other and canceling their matching dimension e.g. if you write 2x3 and 3x1, and then cancel 3 from each side you will get a matrix of dimension 2x1, which is basically the dimension of product matrix.
+
+
+
+How to multiply two matrices in Java
+
+Here is a graphical representation of matrix multiplication algorithm:
+
+Java Program to Multiply Two Matrices - Matrix Multiplication Example
+
+You can see that both matrices met the condition for multiplication i.e. columns of the first matrix are equal to rows of the second matrix. Then we multiply the first row of the first matrix to the first column of the second matrix and this gives us the first element of the first column of result matrix. Similarly, when you multiply the second row of the first matrix to the first column of the second matrix you get the second element of the first column in the result matrix.
+
+
+How to multiply two matrices in Java- Program
+Here is our complete Java program to perform matrix multiplication. In this program, we first ask the user to enter two matrices. Since you cannot accept array from the command line in Java (see here), we ask the user to first enter the number of rows and columns of the matrix and then ask him to populate the matrix.
+
+
+Once we have both the matrices ready we first check whether they met the condition of matrix multiplication or not i.e. number of columns of the first matrix matches to the rows of the second matrix. As I said, we have used a two-dimensional array to represent a matrix in Java.
+
+import java.util.Scanner;
+
+/**
+* Java program to calculate product of Two matrices in Java. In order to
+* multiply two matrices, column of first matrix must be equal to rows of the second
+* matrix.
+*
+* @author Javin Paul
+*/
+public class MatrixMultiplication{
+
+    public static void main(String args[]) {
+
+        Scanner cmd = new Scanner(System.in);
+        System.out.println("Enter the number of rows and columns of 
+                             first matrix");
+
+        int rowsOfFirstMatrix = cmd.nextInt();
+        int columnsOfFirstMatrix = cmd.nextInt();
+        int[][] aMatrix = new int[rowsOfFirstMatrix][columnsOfFirstMatrix];
+
+        System.out.println("Enter the elements of first matrix");
+        for (int i = 0; i &lt; rowsOfFirstMatrix; i++) {
+            for (int j = 0; j &lt; columnsOfFirstMatrix; j++) {
+                aMatrix[i][j] = cmd.nextInt();
+            }
+        }
+
+        System.out.println("Enter the number of rows and columns of the
+                                second matrix");
+        int rowsOfSecondMatrix = cmd.nextInt();
+        int columnsOfSecondMatrix = cmd.nextInt();
+
+        // safety net - check order or each matrix, whether eligible for
+        // multiplication or not
+        while (columnsOfFirstMatrix != rowsOfSecondMatrix) {
+            System.out.printf("Matrices with entered orders can't be
+                         multiplied with each other, " 
+                  + "columnsOfFirstMatrix [%d] != rowsOfSecondMatrix [%d] %n",
+                    columnsOfFirstMatrix, rowsOfSecondMatrix);
+            System.out.println("Enter the number of rows and columns of 
+                                   second matrix");
+            rowsOfSecondMatrix = cmd.nextInt();
+            columnsOfSecondMatrix = cmd.nextInt();
+        }
+
+        int[][] bMatrix = new int[rowsOfSecondMatrix][columnsOfSecondMatrix];
+        System.out.println("Enter numbers of second matrix");
+        for (int i = 0; i &lt; rowsOfSecondMatrix; i++) {
+            for (int j = 0; j &lt; columnsOfSecondMatrix; j++) {
+                bMatrix[i][j] = cmd.nextInt();
+            }
+        }
+
+        // calculating product of two matrices in Java
+        int[][] product = product(aMatrix, bMatrix);
+        System.out.println("Product of entered matrices:-");
+
+        for (int i = 0; i &lt; rowsOfFirstMatrix; i++) {
+            for (int j = 0; j &lt; columnsOfSecondMatrix; j++) {
+                System.out.printf("%d ", product[i][j]);
+            }
+            System.out.printf("%n");
+        }
+        cmd.close();
+    }
+
+    /**
+     * Method to calculate multiplication or product of two matrices.
+     *
+     * @param matrix1
+     * @param matrix2
+     * @return product of two matrix
+     */
+    public static int[][] product(int[][] matrix1, int[][] matrix2) {
+        int columnsOfFirstMatrix = matrix1[0].length;
+        int rowsOfSecondMatrix = matrix2.length;
+
+        if (columnsOfFirstMatrix != rowsOfSecondMatrix) {
+            throw new IllegalArgumentException(String.format("Can't multiply
+                      matrices, columns of first matrix"
+                    + " %d is not equal to rows of second matrix %d", 
+                      columnsOfFirstMatrix, rowsOfSecondMatrix));
+        }
+
+        int rowsOfFirstMatrix = matrix1.length;
+        int columnsofSecondMatrix = matrix2[0].length;
+        int[][] product = new int[rowsOfFirstMatrix][columnsofSecondMatrix];
+
+        for (int i = 0; i &lt; rowsOfFirstMatrix; i++) {
+            for (int j = 0; j &lt; columnsofSecondMatrix; j++) {
+
+                int sum = 0;
+                for (int k = 0; k &lt; rowsOfSecondMatrix; k++) {
+                    sum = sum + matrix1[i][k] * matrix2[k][j];
+                }
+
+                product[i][j] = sum;
+            }
+        }
+
+        return product;
+    }
+
+}
+
+
+and here is the output of this program when you will run this on your favorite Java IDE e.g. Eclipse or IntelliJIDEA or just from the command prompt:
+
+Output:
+Enter the number of rows and columns of the first matrix
+2 3
+Enter the elements of the first matrix
+1 2 3
+4 5 6
+Enter the number of rows and columns of the second matrix
+2 4
+Matrices with entered orders can't be multiplied with each other, 
+columnsOfFirstMatrix [3] != rowsOfSecondMatrix [2]
+Enter the number of rows and columns of the second matrix
+3 2
+Enter numbers of the second matrix
+7 8
+9 10
+11 12
+The product of entered matrices:-
+58 64
+139 154
+
+You can see that our first example was not perfect, the matrices we entered cannot be multiplied with each other because columns of the first matrix are not equal to rows of the second matrix.
+
+That's all about how to do matrix multiplication in Java. This is a good programming exercise to learn and understand how to use two-dimensional arrays in Java, which is one of the key data structure, especially for game development field. If you are just starting with programming and not familiar with key programming concepts then I also suggest you read Head First Java, which teaches you basics of programming in Java language.
+
+
+Read more: http://javarevisited.blogspot.com/2017/04/java-program-to-multiply-two-matrices-with-example.html#ixzz4eQSs0gRs
