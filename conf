@@ -1,0 +1,570 @@
+layers    =    {
+	Game    =    {
+		sections    =    {
+			Locomotion    =    {
+				commands    =    {
+					Movement    =    {
+						forward    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												17
+											]
+										}
+									]
+								}
+							]
+						}
+						backward    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												31
+											]
+										}
+									]
+								}
+							]
+						}
+						left    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												30
+											]
+										}
+									]
+								}
+							]
+						}
+						right    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												32
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Walk    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												42
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Jump    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												57
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Crouch    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												46
+											]
+										},
+										{
+											keys    =    [
+												29
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+			Camera    =    {
+				commands    =    {
+					Rotation    =    {
+						forward    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												34
+											]
+										}
+									]
+								}
+							]
+						}
+						backward    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												35
+											]
+										}
+									]
+								}
+							]
+						}
+						left    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												33
+											]
+										}
+									]
+								}
+							]
+						}
+						right    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												32
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Zoom    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												1
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+			Weapon    =    {
+				commands    =    {
+					Fire    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												0
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Gauntlet    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												2
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					MachineGun    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												3
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Shotgun    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												4
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					RocketLauncher    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												6
+											]
+										},
+										{
+											keys    =    [
+												18
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					LightningGun    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												7
+											]
+										},
+										{
+											keys    =    [
+												16
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Railgun    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												8
+											]
+										},
+										{
+											keys    =    [
+												19
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Nailgun    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												5
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					NextWeapon    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												37
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					PreviousWeapon    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "mouse"
+									shortcuts    =    [
+										{
+											keys    =    [
+												36
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+			UI    =    {
+				commands    =    {
+					LoadoutOn    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												23
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					LoadoutOff    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												24
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Escape    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												1
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					ChangeChamp    =    {
+						cmd    =    {
+							devices    =    [
+
+							]
+						}
+					}
+				}
+			}
+			Abilities    =    {
+				commands    =    {
+					UseAbility    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												33
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+	GameChat    =    {
+		sections    =    {
+			Common    =    {
+				commands    =    {
+					OpenIngameChat    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												28
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					ScoreboardSwitch    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												15
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					Escape    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												1
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					SendMessage    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												28
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+					SwitchChannel    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												15
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+	GameScoreboard    =    {
+		sections    =    {
+			Common    =    {
+				commands    =    {
+					ScoreboardSwitch    =    {
+						cmd    =    {
+							devices    =    [
+								{
+									deviceType    =    "keyboard"
+									shortcuts    =    [
+										{
+											keys    =    [
+												15
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+}
+__type    =    "KeymapQuake"

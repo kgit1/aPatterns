@@ -1,0 +1,585 @@
+package test;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({ TestDataDate.class, TestDataText.class, TestMainUtilities.class, TestCommandHelp.class, TestCommandList.class,
+		TestCommandTotal.class, TestCommandClear.class, TestCommandCurrencies.class, TestCommandExchangeRates.class, TestCommandAdd.class })
+public class AllTests {
+
+}
+
+
+
+
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import aTestProblem.DataDate;
+
+public class TestDataDate {
+
+	@Test
+	public void test() {
+		final int year = 2002;
+		final int month = 11;
+		final int day = 24;
+
+		DataDate dataDate = new DataDate(year, month, day);
+
+		assertEquals(2002, dataDate.getYear());
+		assertEquals(11, dataDate.getMonth());
+		assertEquals(24, dataDate.getDay());
+		assertEquals(year, dataDate.getYear());
+		assertEquals(month, dataDate.getMonth());
+		assertEquals(day, dataDate.getDay());
+
+		assertEquals("2002-11-24", dataDate.toString());
+
+		assertNotNull(dataDate.compareTo(dataDate));
+		assertEquals(0, dataDate.compareTo(dataDate));
+
+		assertEquals("year bigger", -1, dataDate.compareTo(new DataDate(2003, 11, 24)));
+		assertEquals("month bigger", -1, dataDate.compareTo(new DataDate(2002, 12, 24)));
+		assertEquals("day bigger", -1, dataDate.compareTo(new DataDate(2002, 11, 25)));
+		assertEquals("year smaller", 1, dataDate.compareTo(new DataDate(2001, 11, 24)));
+		assertEquals("month smaller", 1, dataDate.compareTo(new DataDate(2002, 10, 24)));
+		assertEquals("day smaller", 1, dataDate.compareTo(new DataDate(2002, 11, 22)));
+
+	}
+
+}
+
+
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import aTestProblem.DataText;
+
+public class TestDataText {
+
+	@Test
+	public void testConstructorGettersToString() {
+		final double spent = 34.05;
+		final String currency = "AUD";
+		final String description = "Jar";
+		DataText dataText = new DataText(spent, currency,description);
+		
+		assertEquals(34.05, dataText.getSpent(), 0.0);
+		assertEquals("AUD", dataText.getCurrency());
+		assertEquals("Jar", dataText.getProduct());
+		assertEquals(spent, dataText.getSpent(), 0.0);
+		assertEquals(currency, dataText.getCurrency());
+		assertEquals(description, dataText.getProduct());
+		
+		assertEquals(" 34.05 AUD Jar", dataText.toString());
+		
+		//fail("Not yet implemented");
+	}
+}
+
+
+
+
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Test;
+
+import aTestProblem.Main;
+
+public class TestMainUtilities {
+
+	// Main tester = new Main();
+
+	@Test
+	public void testCutCommand() {
+		// tester.cutCommand("add");
+		assertEquals("", Main.cutCommand(""));
+		assertEquals("", Main.cutCommand(" "));
+
+		assertEquals("add", Main.cutCommand("add"));
+		assertEquals("add", Main.cutCommand("add "));
+		assertEquals("add", Main.cutCommand("add dsdasd"));
+		assertEquals("addsadasdasd", Main.cutCommand("addsadasdasd"));
+
+		assertEquals("list", Main.cutCommand("list"));
+		assertEquals("list", Main.cutCommand("list "));
+		assertEquals("list", Main.cutCommand("list lsadas"));
+		assertEquals("listlsadas", Main.cutCommand("listlsadas"));
+	}
+
+	@Test
+	public void testIsCommand() {
+		final String correctCommand1 = "add ";
+		final String correctCommand2 = "list";
+		final String correctCommand3 = "clear ";
+		final String correctCommand4 = "total ";
+		final String correctCommand5 = "currencies";
+		final String correctCommand6 = "exchangeRates";
+		final String correctCommand7 = "help";
+		final String correctCommand8 = "exit";
+		final String incorrectCommand1 = "add";
+		final String incorrectCommand2 = "addd";
+		final String incorrectCommand3 = "addsdas";
+
+		assertEquals(correctCommand1, true, Main.isCommand(correctCommand1));
+		assertEquals(correctCommand2, true, Main.isCommand(correctCommand2));
+		assertEquals(correctCommand3, true, Main.isCommand(correctCommand3));
+		assertEquals(correctCommand4, true, Main.isCommand(correctCommand4));
+		assertEquals(correctCommand5, true, Main.isCommand(correctCommand5));
+		assertEquals(correctCommand6, true, Main.isCommand(correctCommand6));
+		assertEquals(correctCommand7, true, Main.isCommand(correctCommand7));
+		assertEquals(correctCommand8, true, Main.isCommand(correctCommand8));
+
+		assertEquals(incorrectCommand1, false, Main.isCommand(incorrectCommand1));
+		assertEquals(incorrectCommand2, false, Main.isCommand(incorrectCommand2));
+		assertEquals(incorrectCommand3, false, Main.isCommand(incorrectCommand3));
+	}
+
+	@Test
+	public void testIsInteger() {
+		final String correctInt = "22";
+		final String incorrectInt1 = "a22";
+		final String incorrectInt2 = "a";
+		final String incorrectInt3 = " ";
+		final String incorrectInt4 = "";
+		final String incorrectInt5 = null;
+
+		assertEquals("22", true, Main.isInteger(correctInt));
+		assertEquals("a22", false, Main.isInteger(incorrectInt1));
+		assertEquals("a", false, Main.isInteger(incorrectInt2));
+		assertEquals(" ", false, Main.isInteger(incorrectInt3));
+		assertEquals("", false, Main.isInteger(incorrectInt4));
+		assertEquals("null1", false, Main.isInteger(incorrectInt5));
+		assertEquals("null2", false, Main.isInteger(null));
+	}
+
+	@Test
+	public void testIsDouble() {
+		final String correctInt1 = "22";
+		final String correctInt2 = "22.";
+		final String correctInt3 = "22.2";
+		final String incorrectInt1 = "a22";
+		final String incorrectInt2 = "a";
+		final String incorrectInt3 = " ";
+		final String incorrectInt4 = "";
+		final String incorrectInt5 = null;
+
+		assertEquals("22", true, Main.isDouble(correctInt1));
+		assertEquals("22.", true, Main.isDouble(correctInt2));
+		assertEquals("22.1", true, Main.isDouble(correctInt3));
+		assertEquals("a22", false, Main.isDouble(incorrectInt1));
+		assertEquals("a", false, Main.isDouble(incorrectInt2));
+		assertEquals(" ", false, Main.isDouble(incorrectInt3));
+		assertEquals("", false, Main.isDouble(incorrectInt4));
+		assertEquals("null1", false, Main.isDouble(incorrectInt5));
+		assertEquals("null2", false, Main.isDouble(null));
+	}
+
+	@Test
+	public void testIsValidDate() {
+		final String correctDate1 = "2017-05-25";
+		final String correctDate2 = "2017-5-25";
+		final String correctDate3 = "2016-2-29";
+		final String correctDate4 = "2015-2-28";
+		final String incorrectDate1 = "1999-05-25";
+		final String incorrectDate2 = "2051-05-25";
+		final String incorrectDate3 = "2017/05/25";
+		final String incorrectDate4 = "201gfdfg25";
+		final String incorrectDate5 = "2015-2-29";
+
+		assertEquals("2017-05-25", true, Main.isValidDate(correctDate1));
+		assertEquals("2017-5-25", true, Main.isValidDate(correctDate2));
+		assertEquals("2016-2-29", true, Main.isValidDate(correctDate3));
+		assertEquals("2015-2-28", true, Main.isValidDate(correctDate4));
+
+		assertEquals("1999-05-25", false, Main.isValidDate(incorrectDate1));
+		assertEquals("2051-05-25", false, Main.isValidDate(incorrectDate2));
+		assertEquals("2017/05/25", false, Main.isValidDate(incorrectDate3));
+		assertEquals("201gfdfg25", false, Main.isValidDate(incorrectDate4));
+		assertEquals("201gfdfg25", false, Main.isValidDate(incorrectDate4));
+		assertEquals("2015-2-29", false, Main.isValidDate(incorrectDate5));
+	}
+
+	@Test
+	public void testIsCurrency() {
+		final String correctCurrency = "AUD";
+		final String incorrectCurrency1 = "aud";
+		final String incorrectCurrency2 = "dfsdffds";
+
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+
+		assertEquals("correct", true, Main.isCurrency(correctCurrency));
+		assertEquals("incorrect", false, Main.isCurrency(incorrectCurrency1));
+		assertEquals("incorrect", false, Main.isCurrency(incorrectCurrency2));
+	}
+
+	@Test
+	public void testAddParser() {
+		List<String> correctDataArray = new ArrayList<>();
+		correctDataArray.add("add");
+		correctDataArray.add("2018-01-01");
+		correctDataArray.add("100");
+		correctDataArray.add("AUD");
+		correctDataArray.add("milk");
+
+		List<String> correctDataInput = Main.addParser("add 2018-01-01 100 AUD milk");
+		List<String> incorrectDataInput = Main.addParser("add 2018/01/01 100 AUD milk");
+
+		assertEquals("addParserCorrectArray", correctDataArray, correctDataInput);
+		// assertEquals(false, incorrectDataArray.equals(testData1));
+		assertEquals(new ArrayList<String>(), incorrectDataInput);
+	}
+
+	@Test
+	public void testIsCorrectLength() {
+		final String correctString = "Mary had a little lamb";
+		final String toLongString = "asddddddddddddddddddddddddddddddddddddddddddsadasd";
+
+		assertEquals(true, Main.isCorrectLength(correctString));
+		assertEquals(false, Main.isCorrectLength(toLongString));
+	}
+
+}
+
+
+
+
+package test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.Test;
+
+import aTestProblem.Main;
+
+public class TestCommandHelp {
+
+	@Test
+	public void testCommandHelp() {
+		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		final String string1 = "===========================================================";
+		final String string2 = "===========================================================";
+		final String string3 = "===========================================================";
+		final String string4 = "===========================================================";
+		final String string5 = "list";
+		final String string6 = "===========================================================";
+		final String string7 = "===========================================================";
+		final String string8 = "===========================================================";
+		final String string9 = "===========================================================";
+		final String string10 = "===========================================================";
+		final String string11 = "===========================================================";
+		final String string12 = "===========================================================";
+
+		System.setOut(new PrintStream(outContent));
+
+		Main.commandHelp();
+		// trim() used to cutoff "line separator" after System.out.println
+		// and each line needs to be tested separately
+		// assertEquals(string1, outContent.toString().trim());
+
+		// commented because makes all output prints finds themselves null
+		// System.setOut(null);
+	}
+
+}
+
+
+
+
+package test;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import aTestProblem.DataDate;
+import aTestProblem.DataText;
+import aTestProblem.Main;
+
+public class TestCommandList {
+
+	@Before
+	public void setUp() {
+
+		Main.programmData = new TreeMap<>();
+		List<DataText> dataText1 = new ArrayList<>();
+		List<DataText> dataText2 = new ArrayList<>();
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText2.add(new DataText(22, "BRL", "Gorm"));
+
+		Main.programmData.put(new DataDate(2001, 10, 21), dataText1);
+		Main.programmData.put(new DataDate(2011, 10, 21), dataText1);
+
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void testCommandList() {
+		Main.commandList();
+	}
+
+}
+
+
+
+
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import aTestProblem.DataDate;
+import aTestProblem.DataText;
+import aTestProblem.Main;
+
+public class TestCommandTotal {
+
+	@Before
+	public void setUp() {
+
+		Main.programmData = new TreeMap<>();
+		List<DataText> dataText1 = new ArrayList<>();
+		List<DataText> dataText2 = new ArrayList<>();
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText2.add(new DataText(22, "BRL", "Gorm"));
+
+		Main.programmData.put(new DataDate(2001, 10, 21), dataText1);
+		Main.programmData.put(new DataDate(2011, 10, 21), dataText1);
+
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void commandTotal() {
+		Main.commandTotal("total AUD");
+
+	}
+
+}
+
+
+
+
+
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import aTestProblem.DataDate;
+import aTestProblem.DataText;
+import aTestProblem.Main;
+
+public class TestCommandClear {
+
+	@Before
+	public void setUp() {
+
+		Main.programmData = new TreeMap<>();
+		List<DataText> dataText1 = new ArrayList<>();
+		List<DataText> dataText2 = new ArrayList<>();
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText2.add(new DataText(22, "BRL", "Gorm"));
+
+		Main.programmData.put(new DataDate(2001, 10, 21), dataText1);
+		Main.programmData.put(new DataDate(2011, 10, 21), dataText2);
+
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void testCommandList() {
+		final String correctClearCommand = "clear 2011-10-21";
+		final String correctClearCommandWrongDate = "clear 2010-10-21";
+		final String incorrectClearCommand = "clear2011-10-21";
+
+		Main.commandClear(correctClearCommand);
+		assertEquals(1, Main.programmData.size());
+
+		Main.commandClear(correctClearCommandWrongDate);
+		assertEquals(1, Main.programmData.size());
+
+		Main.commandClear(incorrectClearCommand);
+		assertEquals(1, Main.programmData.size());
+	}
+
+}
+
+
+
+package test;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import aTestProblem.Main;
+
+public class TestCommandCurrencies {
+
+	@Before
+	public void setCurrencies() {
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void testCommandCurrencies() {
+		System.out.println("===========================================================");
+		System.out.println("Test commandCurrencies");
+		Main.commandCurrencies();
+		System.out.println("===========================================================");
+	}
+
+}
+
+
+
+package test;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import aTestProblem.Main;
+
+public class TestCommandExchangeRates {
+
+	@Before
+	public void setCurrencies() {
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void testCommandExchangeRates() {
+		System.out.println("===========================================================");
+		System.out.println("Test commandExchangeRates");
+		Main.commandExchangeRates();
+		System.out.println("===========================================================");
+	}
+
+}
+
+
+
+
+
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import aTestProblem.DataDate;
+import aTestProblem.DataText;
+import aTestProblem.Main;
+
+public class TestCommandAdd {
+
+	@Before
+	public void setUp() {
+
+		Main.programmData = new TreeMap<>();
+		List<DataText> dataText1 = new ArrayList<>();
+		List<DataText> dataText2 = new ArrayList<>();
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText1.add(new DataText(22, "USD", "Gorm"));
+		dataText2.add(new DataText(22, "BRL", "Gorm"));
+
+		Main.programmData.put(new DataDate(2001, 10, 21), dataText1);
+		Main.programmData.put(new DataDate(2011, 10, 21), dataText2);
+
+		Main.currenciesData = Main.parseCurrencies(Main.getCurrencies());
+		Main.currenciesRate = new LinkedHashMap<>();
+		Main.currenciesRate.put("USD", (double) 1);
+		Main.currenciesRate.putAll((Map<String, Double>) Main.currenciesData.get("rates"));
+	}
+
+	@Test
+	public void test() {
+		List<String> testData = new ArrayList<>();
+		testData.add("add");
+		testData.add("2017-12-04");
+		testData.add("20");
+		testData.add("USD");
+		testData.add("Horn");
+		Main.commandAdd(testData);
+
+		assertEquals("programData size", 3, Main.programmData.size());
+
+		Main.commandAdd(testData);
+		assertEquals("programData size", 3, Main.programmData.size());
+	}
+
+}
+
