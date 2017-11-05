@@ -1,6 +1,5 @@
 package j8.ReadWrite;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,25 +10,23 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class ReadWriteFile {
 
 	public static void main(String[] args) {
-		// Files.lines()/readAllLines()/BufferedReader.lines()=========================================================================================================
-		int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7 };
 
-		String input = "FileInputStream and BufferedReader vs FileReader and BufferedReader"
+		final int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+
+		final String separator = System.lineSeparator();
+		final String input = "FileInputStream and BufferedReader vs FileReader and BufferedReader"
 				+ "\nThe difference between the two methods is how to construct a BufferedReader object. "
 				+ "\nMethod 1 uses InputStreamReader and Method 2 uses FileReader. What's the difference between "
 				+ "\nthe two classes? An InputStreamReader is a bridge from byte streams to character streams: "
@@ -89,16 +86,27 @@ public class ReadWriteFile {
 
 	private static void appendJ8(File file, String input) {
 
-		try (OutputStream out = Files.newOutputStream(file.toPath(), StandardOpenOption.APPEND,
-				StandardOpenOption.CREATE)) {
-
-			out.write(input.getBytes());
-
+		try {
+			Files.write(file.toPath(), input.getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+
+	// private static void appendJ8(File file, String input) {
+	//
+	// try (OutputStream out = Files.newOutputStream(file.toPath(),
+	// StandardOpenOption.APPEND,
+	// StandardOpenOption.CREATE)) {
+	//
+	// out.write(input.getBytes());
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// }
 
 	private static List<String> readJ8LineByLine(File file) {
 
