@@ -1,0 +1,20 @@
+1
+2
+3
+4
+5
+6
+7
+FileInputStream and BufferedReader vs FileReader and BufferedReader
+The difference between the two methods is how to construct a BufferedReader object. 
+Method 1 uses InputStreamReader and Method 2 uses FileReader. What's the difference between 
+the two classes? An InputStreamReader is a bridge from byte streams to character streams: 
+It reads bytes and decodes them into characters using a specified charset. InputStreamReader 
+can handle other input streams than files, such as network connections, classpath resources, 
+ZIP files, etc.
+
+FileReader is a convenience class for reading character files. The constructors of this class 
+assume that the default character encoding and the default byte-buffer size are appropriate. 
+FileReader does not allow you to specify an encoding other than the platform default encoding. 
+Therefore, it is not a good idea to use it if the program will run on systems with different 
+platform encoding.
