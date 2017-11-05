@@ -65,6 +65,44 @@ public class ReadWriteFile {
 
 		// printJ8LineByLineTrimEmpty(file);
 
+		//====================================================================================
+		// What's the shortest/most elegant solution to write this stream to a file, one
+		// line per stream element?
+		//
+		// Probably the shortest way is to use Files.write along with the trick which
+		// converts the Stream to the Iterable:
+		//
+		// Files.write(Paths.get(filePath), (Iterable<String>)stream::iterator);
+		// For example:
+		//
+		// Files.write(Paths.get("/tmp/numbers.txt"),
+		// (Iterable<String>)IntStream.range(0,
+		// 5000).mapToObj(String::valueOf)::iterator);
+		// If it looks too hackish, use more explicit approach:
+		//
+		// try(PrintWriter pw = new PrintWriter(Files.newBufferedWriter(
+		// Paths.get("/tmp/numbers.txt")))) {
+		// IntStream.range(0, 5000).mapToObj(String::valueOf).forEach(pw::println);
+		//
+		//
+		// 119
+		// down vote
+		// To convert a Stream to an Iterable, you can do
+		//
+		// Stream<X> stream = null;
+		// Iterable<X> iterable = stream::iterator
+		// To pass a Stream to a method that expects Iterable,
+		//
+		// void foo(Iterable<X> iterable)
+		// simply
+		//
+		// foo(stream::iterator)
+		// however it probably looks funny; it might be better to be a little bit more
+		// explicit
+		//
+		// foo( (Iterable<X>)stream::iterator );
+		//===================================================================================
+
 	}
 
 	private static void writeJ8LineByLine(File file, int[] numbers) {
