@@ -1,1 +1,3 @@
-I know the Decorator Pattern therefore I RULE!
+I know the Decorator Pattern therefore I RULE!;
+print('Hello World');
+print('foobar');
