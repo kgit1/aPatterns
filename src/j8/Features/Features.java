@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -55,8 +56,25 @@ public class Features {
 
 		System.out.println(data);
 
+		// comparator
+		// old
+		// public class ByScoreComparator implements Comparator<User> {
+		//
+		// @Override
+		// public int compare(User u1, User u2) {
+		// return (int) signum(o2.getAge() - o1.getAge());
+		// }
+		// }
+
+		// new
+		// Comparator<User> comparator = Comparator
+		// .comparingDouble(User::getAge)
+		// .thenComparing(User::getName);
+		// List<User> hList = new ArrayList<>();
+		// hList.sort(comparator);
 		
-		
+		//to replace all characters in list now you can just
+		//list.replaceAll(String::toLowerCase);
 
 	}
 
