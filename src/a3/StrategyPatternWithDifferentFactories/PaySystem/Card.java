@@ -1,4 +1,4 @@
-package a3.StrategyPattern.PaySystem;
+package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 import java.text.MessageFormat;
 
@@ -25,7 +25,7 @@ public abstract class Card implements PaymentMethod {
 	@Override
 	public void pay(int cents) {
 
-		System.out.println("Payed " + cents + " cents using " + toString());
+		System.out.println(getClass().getSimpleName() + ": Payed: " + cents + " cents, " + toString());
 		executeTransaction(cents);
 	}
 

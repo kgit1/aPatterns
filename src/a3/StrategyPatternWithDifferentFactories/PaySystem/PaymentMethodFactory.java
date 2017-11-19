@@ -1,4 +1,4 @@
-package a3.StrategyPattern.PaySystem;
+package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 public class PaymentMethodFactory {
 
@@ -11,6 +11,12 @@ public class PaymentMethodFactory {
 			return createDebitCard();
 		case "cash":
 			return createCash();
+		case "bitcoin":
+			return createBitcoin();
+		case "androidPay":
+			return createAndroidPay();
+		case "applePay":
+			return createApplePay();
 		}
 
 		throw new IllegalArgumentException();
@@ -21,11 +27,23 @@ public class PaymentMethodFactory {
 	}
 
 	private static DebitCard createDebitCard() {
-		return new DebitCard("John Doe", "511111111111", "234", "02/23");
+		return new DebitCard();
 	}
 
 	private static Cash createCash() {
 		return new Cash();
+	}
+
+	private static PaymentMethod createBitcoin() {
+		return new Bitcoin();
+	}
+
+	private static PaymentMethod createAndroidPay() {
+		return new AndroidPay();
+	}
+
+	private static PaymentMethod createApplePay() {
+		return new ApplePay();
 	}
 
 }

@@ -1,4 +1,4 @@
-package a3.StrategyPattern.PaySystem;
+package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 public class CreditCard extends Card {
 
@@ -13,7 +13,7 @@ public class CreditCard extends Card {
 
 	@Override
 	protected void executeTransaction(int cents) {
-		System.out.println(cents + ": " + this.toString() + ": credit transaction executed");
+		System.out.println(getClass().getSimpleName() + ": transaction executed: Payed " + cents + ", " + this.toString());
 	}
 
 }

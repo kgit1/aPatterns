@@ -1,4 +1,4 @@
-package a3.StrategyPattern.PaySystem;
+package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 import java.util.ArrayList;
 import java.util.List;

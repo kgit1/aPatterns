@@ -1,11 +1,11 @@
-package a3.StrategyPattern.PaySystem;
+package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 import java.util.Properties;
 
-public class StaticReflectionPaymentMethodFactory {
+public class PropertiesReflectionPaymentMethodFactory {
 
 	static public Optional<PaymentMethod> getPaymentMethod() {
 
@@ -33,7 +33,7 @@ public class StaticReflectionPaymentMethodFactory {
 		try {
 
 			Properties paymentConfig = new Properties();
-			InputStream configFile = StaticReflectionPaymentMethodFactory.class
+			InputStream configFile = PropertiesReflectionPaymentMethodFactory.class
 					.getResourceAsStream("config.properties");
 
 			paymentConfig.load(configFile);
