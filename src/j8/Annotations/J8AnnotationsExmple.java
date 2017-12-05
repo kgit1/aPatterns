@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public class AnnotationsExmple {
+public class J8AnnotationsExmple {
 
 	public static void main(String[] args) {
 

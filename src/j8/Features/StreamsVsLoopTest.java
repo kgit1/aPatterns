@@ -1,6 +1,7 @@
 package j8.Features;
 
 import java.util.ArrayList;
+import static java.util.stream.IntStream.range;
 import java.util.List;
 
 public class StreamsVsLoopTest {
@@ -47,6 +48,7 @@ public class StreamsVsLoopTest {
 				list.parallelStream().limit(1000).filter(value -> value % 2 == 0).mapToInt(Integer::intValue).sum());
 		endTime = System.nanoTime();
 		System.out.println("Parallel stream limited time: " + (double) (endTime - startTime) / 1000000.0);
+		range(10, 0).forEach(System.out::println);
 
 	}
 
