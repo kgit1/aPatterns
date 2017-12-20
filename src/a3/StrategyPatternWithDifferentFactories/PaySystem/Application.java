@@ -1,6 +1,7 @@
 package a3.StrategyPatternWithDifferentFactories.PaySystem;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 public class Application {
 
@@ -143,7 +144,9 @@ public class Application {
 
 		endTime = System.nanoTime();
 		long duration = endTime - startTime;
-		double shortDuration = (double) duration / 1000000.0;
+		double shortDuration = (double) duration / 1000000000.0;
+		// double shortDuration = TimeUnit.SECONDS.convert(duration,
+		// TimeUnit.NANOSECONDS);
 		System.out.println(shortDuration + ": " + startTime + " - " + endTime + " = " + duration);
 
 	}
