@@ -14,9 +14,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="D:/JavaProjects/junit/mockito-core-2.13.0 (1).jar"/>
-	<classpathentry kind="lib" path="D:/JavaProjects/junit/byte-buddy-1.7.9.jar"/>
-	<classpathentry kind="lib" path="D:/JavaProjects/junit/byte-buddy-agent-1.7.9.jar"/>
-	<classpathentry kind="lib" path="D:/JavaProjects/junit/objenesis-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/junit/mockito/byte-buddy-1.7.9.jar"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/junit/mockito/byte-buddy-agent-1.7.9.jar"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/junit/mockito/mockito-core-2.13.0 (1).jar"/>
+	<classpathentry kind="lib" path="D:/JavaProjects/junit/mockito/objenesis-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

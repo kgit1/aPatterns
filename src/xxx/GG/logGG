@@ -1,10 +1,11 @@
+{"result":true,"response":"\u0412\u044b \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0432\u043e\u0448\u043b\u0438 \u043d\u0430 \u0441\u0430\u0439\u0442","code":4,"login_page":"","return":false,"user_id":"1084843","token":"d497d26acaa4936301ed7d5116ad7b97","settings":false}result : true
 response : Вы успешно вошли на сайт
 code : 4
 login_page : 
 return : false
-user_id : 120776
-token : 4aab910288c14a1fec1484876ece7332
-settings : {"alignType":0,"pekaMod":1,"sound":1,"smilesType":4,"hide":0,"noBan":1,"isDoSounds":"auto","isDoHide":false,"isDoAnimate":true,"isDoAlign":true,"isShowPeka":true,"customColors":{"184":"bronze","11577":"simple"},"customIcons":{"184":"none","11577":"none"}}
+user_id : 1084843
+token : d497d26acaa4936301ed7d5116ad7b97
+settings : false
 
 
 	channels list max 50
@@ -13,7 +14,7 @@ settings : {"alignType":0,"pekaMod":1,"sound":1,"smilesType":4,"hide":0,"noBan":
 	{"type":"get_channels_list","data":{"start":101,"count": 150}}
 	
 	authorize on server
-	{"type":"auth","data":{"user_id":"120776","token":"4aab910288c14a1fec1484876ece7332"}}
+	{"type":"auth","data":{"user_id":"1084843","token":"d497d26acaa4936301ed7d5116ad7b97"}}
 	
 	join on channel(Miker)
 	{"type":"join","data":{"channel_id":"5","hidden":false}}

@@ -19,7 +19,7 @@ public class FinalGGPostSendConnectionTest {
 	public static void main(String[] args) throws Exception {
 		URL url = new URL("http://goodgame.ru/ajax/chatlogin");
 		Map<String, Object> params = new LinkedHashMap<>();
-		params.put("login", "kirtt");
+		params.put("login", "bobbin");
 		params.put("password", "qwert111");
 		StringBuilder postData = new StringBuilder();
 		for (Map.Entry<String, Object> param : params.entrySet()) {

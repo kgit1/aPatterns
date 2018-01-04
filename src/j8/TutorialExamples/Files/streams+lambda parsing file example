@@ -1,9 +1,9 @@
 https://eyalgo.com/2015/01/06/java-8-stream-and-lambda-expressions-parsing-file-example/
 
-Java 8 Stream and Lambda Expressions � Parsing File Example
+Java 8 Stream and Lambda Expressions – Parsing File Example
 Posted on January 6, 2015 by eyalgo
 Recently I wanted to extract certain data from an output log.
-Here�s part of the log file:
+Here’s part of the log file:
 
 2015-01-06 11:33:03 b.s.d.task [INFO] Emitting: eVentToRequestsBolt __ack_ack [-6722594615019711369 -1335723027906100557]
 2015-01-06 11:33:03 c.s.p.d.PackagesProvider [INFO] ===---> Loaded package com.foo.bar
@@ -33,9 +33,9 @@ The last part was taking each string and write it to a file. That was the termin
 
 .forEach(packageName -> writeToFile(fw, packageName));
 writeToFile is a method I created.
-The reason is that Java File System throws IOException. You can�t use checked exceptions in lambda expressions.
+The reason is that Java File System throws IOException. You can’t use checked exceptions in lambda expressions.
 
-Here�s a full example (note, I don�t check input)
+Here’s a full example (note, I don’t check input)
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -86,3 +86,80 @@ public class App {
     }
  
 }
+
+
+Java 8 List All Files In Directory Example
+August 30, 2016 by Lokesh Gupta
+
+In this example, we will learn to use java 8 APIs along with Files.list() and DirectoryStream to list all files present in that directory.
+
+List all files and sub-directories using Files.list()
+Files.list() method to list all file names and sub-directories in current directory.
+
+Files.list(Paths.get("."))
+        .forEach(System.out::println);
+ 
+ Output:
+ 
+.\filename1.txt
+.\directory1
+.\filename2.txt
+.\Employee.java
+List only files inside directory using filter expression
+You can use filters to filter out sub-directories and print only file names, if you need it.
+
+Files.list(Paths.get("."))
+        .filter(Files::isRegularFile)
+        .forEach(System.out::println);
+ 
+ Output:
+ 
+.\filename1.txt
+.\filename2.txt
+.\Employee.java
+To list files in a different directory, we can replace "." with the full path of the directory we desire.
+
+List files and sub-directories with Files.newDirectoryStream()
+Java provides a more flexible way of traversing a directory content using Files.newDirectoryStream().
+
+Please note that if we’re working with a large directory, then using DirectoryStream actually make code faster.
+
+Files.newDirectoryStream(Paths.get("."))
+        .forEach(System.out::println);
+ 
+ Output:
+ 
+.\filename1.txt
+.\directory1
+.\filename2.txt
+.\Employee.java
+List only files with Files.newDirectoryStream()
+To list out only files and excluding all directories from stream, use path filter as second argument.
+
+Files.newDirectoryStream(Paths.get("."), path -> path.toFile().isFile())
+        .forEach(System.out::println);
+ 
+Output:
+ 
+.\filename1.txt
+.\filename2.txt
+.\Employee.java
+List files of certain extention with Files.newDirectoryStream()
+You can change the path filter expression passed in second argument to get files of certain extension only.
+
+Files.newDirectoryStream(Paths.get("."),
+        path -> path.toString().endsWith(".java"))
+        .forEach(System.out::println);
+ 
+Output:
+ 
+.\Employee.java
+Find all hidden files in directory
+To find all hidden files, you can use filter expression file -> file.isHidden() in any of above example.
+
+Or you can use this shortcut method.
+
+final​ ​File​​[]​ files = ​new​ ​File​(​"."​).listFiles(file -> file.isHidden());
+//or
+final​ ​File​​[]​ files = ​new​ ​File​(​"."​).listFiles(​File​::isHidden);
+In above examples, we learn to use java 8 APIs for finding the files inside a directory on various search criteria. Feel free to modify the code and play with it.
